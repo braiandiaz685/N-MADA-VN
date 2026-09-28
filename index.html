@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusVault - Visual Novels & Games Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#080C14',
+                        cardBg: 'rgba(18, 24, 38, 0.7)',
+                        accentPurple: '#7c3aed',
+                        accentPink: '#db2777'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #080C14; color: #f3f4f6; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(18, 24, 38, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-hover:hover { background: rgba(26, 34, 52, 0.8); border-color: rgba(124, 58, 237, 0.4); }
+        .glow { box-shadow: 0 0 40px -10px rgba(124, 58, 237, 0.3); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-purple-600 selection:text-white pb-20 flex flex-col justify-between">
+
+    <div>
+        <!-- ========================================== -->
+        <!-- ZONA 1: BARRA SUPERIOR                    -->
+        <!-- ========================================== -->
+        <header class="sticky top-0 z-50 glass border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center glow">
+                        <span class="text-xl font-black">N</span>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">NexusVault</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <input type="text" id="searchInput" placeholder="Buscar juegos o novelas..." class="bg-black/40 border border-white/10 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-purple-500 w-40 sm:w-64 transition-all">
+                    
+                    <a href="AQUÍ_PEGA_TU_LINK_DE_DONACION" target="_blank" class="bg-pink-600/20 text-pink-300 border border-pink-500/30 hover:bg-pink-600 hover:text-white px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5">
+                        <span>☕ Apoyar</span>
+                    </a>
+
+                    <span class="text-xs bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-full font-semibold">+18</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================== -->
+        <!-- ZONA 2: BANNER PRINCIPAL (JUEGO DESTACADO)  -->
+        <!-- ========================================== -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="relative rounded-3xl overflow-hidden glass p-8 sm:p-12 border border-white/10 flex flex-col justify-end min-h-[400px]">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#080C14] via-[#080C14]/60 to-transparent z-10"></div>
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600')] bg-cover bg-center opacity-40"></div>
+                
+                <div class="relative z-20 max-w-2xl">
+                    <div class="flex items-center space-x-3 mb-2">
+                        <span class="bg-purple-600/30 text-purple-300 border border-purple-500/30 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Destacado del Mes</span>
+                        <span class="text-xs font-semibold bg-white/10 px-2 py-1 rounded-md text-gray-200 border border-white/10">🖥️ PC</span>
+                        <span class="text-xs font-semibold bg-white/10 px-2 py-1 rounded-md text-gray-200 border border-white/10">📱 Android</span>
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl font-extrabold mt-2 mb-3 tracking-tight">Cybernetic Dreams: Episode I</h1>
+                    <p class="text-gray-300 text-sm sm:text-base mb-6 line-clamp-2">Una novela visual interactiva de ciencia ficción con múltiples finales y romance en una megaciudad futurista.</p>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button onclick="openModal('Cybernetic Dreams: Episode I', '4.2 GB', 'Novela Visual / Sci-Fi', 'Una impresionante novela visual de ciencia ficción ambientada en un futuro ciberpunk. Controlas a un ex-detective que debe desentrañar una conspiración corporativa mientras interactúa con personajes únicos, tomando decisiones que definirán su destino y sus relaciones.', '#', '#', '#', '#', '#', '#')" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-purple-600/30 flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            <span>Ver Detalles y Descarga</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- ZONA 3: LISTA DE JUEGOS Y CATEGORÍAS        -->
+        <!-- ========================================== -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+            <h2 class="text-xl font-bold mb-4 flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                <span>Últimos Lanzamientos y Categorías</span>
+            </h2>
+
+            <!-- BARRA DESLIZABLE DE CATEGORÍAS -->
+            <div class="flex items-center space-x-2 overflow-x-auto no-scrollbar py-2 mb-8 border-y border-white/5">
+                <button onclick="filtrarCategoria('todos')" class="bg-purple-600 text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all shadow-md shadow-purple-600/20">Todos</button>
+                <button onclick="filtrarCategoria('2d')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">2D</button>
+                <button onclick="filtrarCategoria('anal')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Anal</button>
+                <button onclick="filtrarCategoria('bdsm')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Bdsm</button>
+                <button onclick="filtrarCategoria('ciencia-ficcion')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Ciencia ficción</button>
+                <button onclick="filtrarCategoria('control-mental')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Control mental</button>
+                <button onclick="filtrarCategoria('corrupcion')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Corrupción</button>
+                <button onclick="filtrarCategoria('dominacion-femenina')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Dominación femenina</button>
+                <button onclick="filtrarCategoria('dominacion-masculina')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Dominación masculina</button>
+                <button onclick="filtrarCategoria('embarazo')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Embarazo</button>
+                <button onclick="filtrarCategoria('esclavo')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Esclavo</button>
+                <button onclick="filtrarCategoria('escolar')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Escolar</button>
+                <button onclick="filtrarCategoria('exclusivo')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Exclusivo</button>
+                <button onclick="filtrarCategoria('fantasia')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Fantasía</button>
+                <button onclick="filtrarCategoria('finalizado')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Finalizado</button>
+                <button onclick="filtrarCategoria('furry')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Furry</button>
+                <button onclick="filtrarCategoria('futa-trans')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Futa/Trans</button>
+                <button onclick="filtrarCategoria('gay')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Gay</button>
+                <button onclick="filtrarCategoria('harem')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Harem</button>
+                <button onclick="filtrarCategoria('humor')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Humor</button>
+                <button onclick="filtrarCategoria('ia')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">IA</button>
+                <button onclick="filtrarCategoria('incesto')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Incesto</button>
+                <button onclick="filtrarCategoria('interracial')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Interracial</button>
+                <button onclick="filtrarCategoria('lesbianas')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Lesbianas</button>
+                <button onclick="filtrarCategoria('lol1')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Lol1</button>
+                <button onclick="filtrarCategoria('milf')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Milf</button>
+                <button onclick="filtrarCategoria('monstruo')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Monstruo</button>
+                <button onclick="filtrarCategoria('ntr')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Ntr</button>
+                <button onclick="filtrarCategoria('parodia')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Parodia</button>
+                <button onclick="filtrarCategoria('protagonista-femenino')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Protagonista femenino</button>
+                <button onclick="filtrarCategoria('protagonista-masculino')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Protagonista masculino</button>
+                <button onclick="filtrarCategoria('romance')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Romance</button>
+                <button onclick="filtrarCategoria('rpgm')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">RPGM</button>
+                <button onclick="filtrarCategoria('sandbox')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Sandbox</button>
+                <button onclick="filtrarCategoria('shota')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Shota</button>
+                <button onclick="filtrarCategoria('superpoderes')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Superpoderes</button>
+                <button onclick="filtrarCategoria('tetas-grandes')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Tetas grandes</button>
+                <button onclick="filtrarCategoria('virgen')" class="glass glass-hover text-gray-300 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">Virgen</button>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- PÁGINA 1                                          -->
+            <!-- ================================================= -->
+            <div id="pagina1" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Juego 1 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="fantasia romance" onclick="openModal('Shadows of Desire', '3.8 GB', 'Fantasía / Romance', 'Adéntrate en un reino místico donde las sombras ocultan oscuros secretos y profundas pasiones. Como protagonista, tus elecciones románticas y morales cambiarán el rumbo del imperio.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">3.8 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">Fantasía</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Shadows of Desire</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 2.0 • Español</p>
+                    </div>
+                </div>
+
+                <!-- Juego 2 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="milf escolar" onclick="openModal('Neon Memories', '5.1 GB', 'MILF / Escolar', 'Una historia nostálgica y moderna que combina la vida escolar con complejas relaciones adultas. Revive tu juventud con un toque fresco y decisiones profundas.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">5.1 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">MILF</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Neon Memories</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 1.1 • Español</p>
+                    </div>
+                </div>
+
+                <!-- Juego 3 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="ciencia-ficcion harem" onclick="openModal('Akiba School Days', '2.9 GB', 'Ciencia Ficción / Harem', 'Días escolares inusuales en el distrito tecnológico de Akiba. Tecnología avanzada, misterios por resolver y un harén de personajes inolvidables.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">2.9 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">Ciencia ficción</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Akiba School Days</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 1.3 • Español</p>
+                    </div>
+                </div>
+
+                <!-- Juego 4 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="romance" onclick="openModal('Echoes of Passion', '4.0 GB', 'Romance', 'Un drama romántico conmovedor centrado en segundas oportunidades, el arte y los sentimientos que resurgen del pasado.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">4.0 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">Romance</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Echoes of Passion</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 1.0 • Español</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================================================= -->
+            <!-- PÁGINA 2                                          -->
+            <!-- ================================================= -->
+            <div id="pagina2" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 hidden">
+                
+                <!-- Juego 5 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="ciencia-ficcion sandbox" onclick="openModal('Cyber Quest', '4.5 GB', 'Ciencia Ficción / Sandbox', 'Explora un mundo abierto cibernético con total libertad de acción. Completa misiones secundarias, mejora tu equipamiento y descubre los rincones ocultos de la red.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">4.5 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">Ciencia ficción</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Cyber Quest</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 1.0 • Español</p>
+                    </div>
+                </div>
+
+                <!-- Juego 6 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="finalizado" onclick="openModal('Midnight Secrets', '3.2 GB', 'Finalizado', 'Una novela visual de misterio completamente finalizada. Sin esperas de actualizaciones: descubre la verdad completa desde el principio hasta el gran final.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">3.2 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">Finalizado</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Midnight Secrets</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 2.1 • Español</p>
+                    </div>
+                </div>
+
+                <!-- Juego 7 -->
+                <div class="juego-card glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" data-categoria="sandbox 2d" onclick="openModal('Virtual Paradise', '6.1 GB', 'Sandbox / 2D', 'Sumérgete en este simulador en 2D donde puedes construir tu propio paraíso virtual y moldear las relaciones a tu antojo.', '#', '#', '#', '#', '#', '#')">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">6.1 GB</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-purple-400 font-semibold">Sandbox</span>
+                            <span class="text-xs text-gray-400 font-medium">🖥️ / 📱</span>
+                        </div>
+                        <h3 class="font-bold text-base mt-1 truncate">Virtual Paradise</h3>
+                        <p class="text-xs text-gray-500 mt-1">Versión 3.0 • Español</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- BOTONES DE CAMBIO DE PÁGINA (1 y 2)        -->
+            <!-- ========================================== -->
+            <div id="paginacionContainer" class="flex justify-center items-center space-x-3 mt-12">
+                <button id="btnPag1" onclick="cambiarPagina(1)" class="w-10 h-10 rounded-xl bg-purple-600 text-white font-bold flex items-center justify-center transition-all shadow-lg shadow-purple-600/30">1</button>
+                <button id="btnPag2" onclick="cambiarPagina(2)" class="w-10 h-10 rounded-xl glass glass-hover text-gray-300 font-bold flex items-center justify-center transition-all">2</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ZONA 4: PIE DE PÁGINA Y REDES SOCIALES      -->
+    <!-- ========================================== -->
+    <footer class="mt-20 glass border-t border-white/5 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center glow">
+                    <span class="text-sm font-black text-white">N</span>
+                </div>
+                <span class="text-sm font-bold text-gray-300">NexusVault © 2026 - Todos los derechos reservados</span>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="AQUÍ_LINK_DISCORD" target="_blank" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-purple-300 flex items-center space-x-2">
+                    <span>Discord</span>
+                </a>
+                <a href="AQUÍ_LINK_TELEGRAM" target="_blank" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-blue-300 flex items-center space-x-2">
+                    <span>Telegram</span>
+                </a>
+                <a href="AQUÍ_LINK_TWITTER" target="_blank" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-pink-300 flex items-center space-x-2">
+                    <span>Twitter/X</span>
+                </a>
+                <a href="mailto:tu_correo@example.com" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-gray-300 flex items-center space-x-2">
+                    <span>Contacto</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- VENTANA DE DESCARGA Y DESCRIPCIÓN          -->
+    <!-- ========================================== -->
+    <div id="downloadModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass max-w-xl w-full rounded-3xl p-6 sm:p-8 relative border border-white/10 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 p-2 rounded-full transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            
+            <h2 id="modalTitle" class="text-2xl font-bold mb-2">Título del Juego</h2>
+            <div class="flex items-center space-x-3 mb-4">
+                <span id="modalCategory" class="text-xs bg-purple-600/20 text-purple-300 border border-purple-500/30 px-2.5 py-0.5 rounded-full font-semibold">Categoría</span>
+                <span id="modalSize" class="text-xs text-gray-400">Peso</span>
+            </div>
+
+            <!-- DESCRIPCIÓN DEL JUEGO -->
+            <div class="mb-6 bg-black/30 border border-white/5 p-4 rounded-2xl">
+                <h3 class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Sinopsis</h3>
+                <p id="modalDescription" class="text-sm text-gray-300 leading-relaxed">Aquí aparecerá la descripción del juego...</p>
+            </div>
+            
+            <div>
+                <!-- ENLACES PARA PC -->
+                <h3 class="text-sm font-bold text-gray-200 mb-3">🖥️ Descargar para PC (Windows)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                    <a id="linkMegaPc" href="#" target="_blank" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm text-purple-300">Mega</a>
+                    <a id="linkMfPc" href="#" target="_blank" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm text-pink-300">Mediafire</a>
+                    <a id="linkDrivePc" href="#" target="_blank" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm text-blue-300">Drive</a>
+                </div>
+
+                <!-- ENLACES PARA ANDROID -->
+                <h3 class="text-sm font-bold text-gray-200 mb-3 border-t border-white/10 pt-4">📱 Descargar para Android (APK)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <a id="linkMegaAndroid" href="#" target="_blank" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm text-purple-300">Mega</a>
+                    <a id="linkMfAndroid" href="#" target="_blank" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm text-pink-300">Mediafire</a>
+                    <a id="linkDriveAndroid" href="#" target="_blank" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm text-blue-300">Drive</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Script de filtrado, paginación y modal con descripción -->
+    <script>
+        function cambiarPagina(num) {
+            const pag1 = document.getElementById('pagina1');
+            const pag2 = document.getElementById('pagina2');
+            const btn1 = document.getElementById('btnPag1');
+            const btn2 = document.getElementById('btnPag2');
+
+            if (num === 1) {
+                pag1.classList.remove('hidden');
+                pag2.classList.add('hidden');
+                btn1.className = "w-10 h-10 rounded-xl bg-purple-600 text-white font-bold flex items-center justify-center transition-all shadow-lg shadow-purple-600/30";
+                btn2.className = "w-10 h-10 rounded-xl glass glass-hover text-gray-300 font-bold flex items-center justify-center transition-all";
+            } else {
+                pag1.classList.add('hidden');
+                pag2.classList.remove('hidden');
+                btn2.className = "w-10 h-10 rounded-xl bg-purple-600 text-white font-bold flex items-center justify-center transition-all shadow-lg shadow-purple-600/30";
+                btn1.className = "w-10 h-10 rounded-xl glass glass-hover text-gray-300 font-bold flex items-center justify-center transition-all";
+            }
+        }
+
+        function filtrarCategoria(categoria) {
+            const juegos = document.querySelectorAll('.juego-card');
+            const paginacion = document.getElementById('paginacionContainer');
+            const pag1 = document.getElementById('pagina1');
+            const pag2 = document.getElementById('pagina2');
+
+            pag1.classList.remove('hidden');
+            pag2.classList.remove('hidden');
+
+            juegos.forEach(juego => {
+                const categoriasJuego = juego.getAttribute('data-categoria');
+                if (categoria === 'todos' || categoriasJuego.includes(categoria)) {
+                    juego.style.display = 'block';
+                } else {
+                    juego.style.display = 'none';
+                }
+            });
+
+            if (categoria === 'todos') {
+                paginacion.style.display = 'flex';
+                cambiarPagina(1);
+            } else {
+                paginacion.style.display = 'none';
+            }
+        }
+
+        function openModal(title, size, category, description, megaPc, mfPc, drivePc, megaAndroid, mfAndroid, driveAndroid) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalSize').innerText = size;
+            document.getElementById('modalCategory').innerText = category;
+            document.getElementById('modalDescription').innerText = description;
+            
+            document.getElementById('linkMegaPc').href = megaPc;
+            document.getElementById('linkMfPc').href = mfPc;
+            document.getElementById('linkDrivePc').href = drivePc;
+            
+            document.getElementById('linkMegaAndroid').href = megaAndroid;
+            document.getElementById('linkMfAndroid').href = mfAndroid;
+            document.getElementById('linkDriveAndroid').href = driveAndroid;
+            
+            document.getElementById('downloadModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
