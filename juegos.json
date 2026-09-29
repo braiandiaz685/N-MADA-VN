@@ -1,5 +1,39 @@
 [
   {
+    "titulo": "pappu",
+    "version": "",
+    "peso": "",
+    "categorias": [
+      "universidad",
+      "lesbianas",
+      "superpoderes"
+    ],
+    "sinopsis": "jahuigauigauia",
+    "imagen": "https://i.ibb.co/SXZb4Kkp/portada.webp",
+    "capturas": [],
+    "oficial": "#",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "destacado": true,
+    "fecha": "2026-09-29",
+    "actualizado": "2026-09-29"
+  },
+  {
     "titulo": "Deadset Darling [v0.3.2] [Ivory Shade] Español PC/Android",
     "version": "v0.3.2",
     "peso": "8.14 GB",
@@ -35,7 +69,6 @@
       "mediafire": "https://www.mediafire.com/file/hqu8vjtwf3l9g9o/deadsetdarling.hotzone18.com-release.apk/file",
       "drive": "#"
     },
-    "destacado": true,
     "fecha": "2026-09-29",
     "actualizado": "2026-09-29"
   }
