@@ -10,12 +10,13 @@
       "romance"
     ],
     "sinopsis": "Deadset Darling – Prólogo\nToda historia tiene un comienzo.\nDeadset Darling es una novela visual para adultos centrada en la trama y ambientada en Westbrook,\nuna ciudad llena de desconocidos, segundas oportunidades y asuntos pendientes.",
-    "imagen": "assets\\images\\juegos\\deadsetdarling\\portada.webp",
+    "imagen": "https://i.ibb.co/8n25Mry7/portada.webp",
     "capturas": [
-      "assets\\images\\juegos\\deadsetdarling\\5920422_screenshot0005.avif",
-      "assets\\images\\juegos\\deadsetdarling\\5920423_screenshot0006.avif",
-      "assets\\images\\juegos\\deadsetdarling\\5920425_screenshot0008.avif",
-      "assets\\images\\juegos\\deadsetdarling\\5920427_screenshot0010.avif"
+      "https://i.ibb.co/tPshvqVn/5.webp",
+      "https://i.ibb.co/mrRZQtS2/27.webp",
+      "https://i.ibb.co/39BC1yg1/8.webp",
+      "https://i.ibb.co/3yYjKfv5/7.webp",
+      "https://i.ibb.co/0pXccyd2/3.webp"
     ],
     "oficial": "#",
     "pc": {
@@ -35,6 +36,7 @@
       "mediafire": "https://www.mediafire.com/file/hqu8vjtwf3l9g9o/deadsetdarling.hotzone18.com-release.apk/file",
       "drive": "#"
     },
+    "destacado": true,
     "fecha": "2026-09-29",
     "actualizado": "2026-09-29"
   }
