@@ -6,10 +6,22 @@
     "sinopsis": "Adéntrate en un reino místico donde las sombras ocultan oscuros secretos y profundas pasiones. Tus elecciones románticas y morales cambian el rumbo del imperio.",
     "imagen": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "https://example.com/traduccion", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "https://example.com/traduccion",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" },
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    },
     "destacado": true
   },
   {
@@ -19,10 +31,22 @@
     "sinopsis": "Una historia nostálgica y moderna que mezcla la vida universitaria con relaciones adultas complejas y decisiones profundas.",
     "imagen": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Akiba Nights",
@@ -30,10 +54,22 @@
     "sinopsis": "Noches en el distrito tecnológico de Akiba: tecnología avanzada, misterios por resolver y un harén de personajes adultos inolvidables.",
     "imagen": "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Crimson Court",
@@ -41,10 +77,22 @@
     "sinopsis": "Una corte de intrigas donde el poder se negocia entre susurros. Ejemplo de tarjeta; reemplazalo con tu juego.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "https://example.com/traduccion", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "https://example.com/traduccion",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Cyber Quest",
@@ -52,10 +100,22 @@
     "sinopsis": "Una aventura RPG en una ciudad futurista. Ejemplo de tarjeta; reemplazalo con tu juego.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Midnight Secrets",
@@ -63,10 +123,22 @@
     "sinopsis": "Una novela visual de misterio completamente finalizada. Sin esperar actualizaciones: descubrí la verdad desde el principio hasta el final.",
     "imagen": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Virtual Paradise",
@@ -74,10 +146,22 @@
     "sinopsis": "Un simulador en 2D donde construís tu propio paraíso virtual y moldeás las relaciones a tu antojo.",
     "imagen": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "https://example.com/traduccion", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "https://example.com/traduccion",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Starlight Academy Chronicles",
@@ -86,10 +170,22 @@
     "sinopsis": "Una maga adulta regresa a su antigua orden para investigar una serie de desapariciones y descubre que el pasado guarda más de un romance.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Dungeon Landlord",
@@ -97,10 +193,22 @@
     "sinopsis": "Heredaste una mazmorra y hay que pagar el alquiler. Negociá con monstruos, ampliá salas y sobreviví a las visitas de los aventureros.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Rooftop Rivals",
@@ -108,10 +216,22 @@
     "sinopsis": "Dos rivales de una agencia de diseño compiten por el mismo ascenso y por algo más difícil de admitir.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "https://example.com/traduccion", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "https://example.com/traduccion",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Iron Saints",
@@ -119,10 +239,22 @@
     "sinopsis": "Un equipo de héroes veteranos sale de su retiro para enfrentar una amenaza que nadie recordaba. Elegí aliados y decidí en quién confiar.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Harvest Moon Inn",
@@ -130,10 +262,22 @@
     "sinopsis": "Reformá una posada rural, atendé a los viajeros y construí relaciones con los vecinos a lo largo de las estaciones.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Silicon Muse",
@@ -141,10 +285,22 @@
     "sinopsis": "Una programadora crea una asistente virtual que desarrolla personalidad propia. Comedia, enredos y un dilema sobre qué es real.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "https://example.com/traduccion", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "https://example.com/traduccion",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "https://example.com/android",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Blood & Velvet",
@@ -152,10 +308,22 @@
     "sinopsis": "Un baile de máscaras entre vampiros adultos donde cada pacto tiene un precio. Solo para público que busque temas de poder consensuado.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "#", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   },
   {
     "titulo": "Parody Paradise",
@@ -163,9 +331,21 @@
     "sinopsis": "Una comedia que se burla de los clichés de las novelas visuales, con narrador sarcástico y finales absurdos.",
     "imagen": "",
     "pc": {
-      "juego": { "mega": "https://example.com/pc", "mediafire": "#", "drive": "#" },
-      "traduccion": { "mega": "#", "mediafire": "#", "drive": "#" }
+      "juego": {
+        "mega": "https://example.com/pc",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
     },
-    "android": { "mega": "https://example.com/android", "mediafire": "#", "drive": "#" }
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    }
   }
 ]
