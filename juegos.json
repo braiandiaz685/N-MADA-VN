@@ -1,5 +1,34 @@
 [
   {
+    "titulo": "TRIP TO PARPELLOS EN ESPAÑOL PC",
+    "version": "",
+    "peso": "655MB",
+    "categorias": [
+      "2d"
+    ],
+    "sinopsis": "",
+    "imagen": "https://i.ibb.co/nM1YDbHQ/54bba9-bd83c5d986774506a747a63d8c9cbe74-mv2.webp",
+    "capturas": [],
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://www.mediafire.com/file/5vuxdmsc8ri1yu8/%25EA%2599%2585o%257C%257C%25C9%2598q%25C9%25BF%25C9%2592%25EA%259F%25BC_o%25C6%259A_qi%25C9%25BFT.zip/file",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://www.mediafire.com/file/nph3flfdwdvp7f6/%25EA%2599%2585o%257C%257C%25C9%2598q%25C9%25BF%25C9%2592%25EA%259F%25BC_o%25C6%259A_qi%25C9%25BFT_%257Co%25C3%25B1%25C9%2592q%25EA%2599%2585%25C6%258E_%25E1%25B4%258E%25C3%25B2i%25C9%2594%25C9%2594ub%25C9%2592%25C9%25BFT.zip/file",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-09-30"
+  },
+  {
     "titulo": "Sophie [Ch. 1 v2.0 Fix] [SerahArt3D] español",
     "version": "1 v2.0",
     "peso": "572MB",
