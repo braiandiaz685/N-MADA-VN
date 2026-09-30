@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<!-- Hace que la página se adapte al celular y a la PC. No tocar. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Nombre que aparece en la pestaña del navegador y en Google. Cambiá "Nómada VN" por el nombre de tu sitio. -->
+<title>Nómada VN - Visual Novels & Games Hub</title>
+<!-- Descripción del sitio para Google y para las vistas previas al compartir el enlace (Discord, Twitter). -->
+<meta name="description" content="Juegos y novelas visuales para adultos (+18) para PC y Android, con traducción al español.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nómada VN - Visual Novels & Games Hub">
+<meta property="og:description" content="Juegos y novelas visuales para adultos (+18) para PC y Android, con traducción al español.">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index,follow">
+<!-- Color de la barra del navegador en el celular. -->
+<meta name="theme-color" content="#080C14">
+<!-- Ícono de la pestaña del navegador (favicon): cuadrado violeta con la letra N. Para cambiar la letra, editá la N dentro de la dirección de abajo. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c3aed'/%3E%3Ctext x='32' y='46' font-size='40' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EN%3C/text%3E%3C/svg%3E">
+<!-- Estilos del diseño: styles.css lo genera Tailwind al ejecutar compilar.bat (lee las clases de este index.html). Tiene que estar en la misma carpeta que index.html. Cada vez que cambies clases del diseño, volvé a ejecutar compilar.bat. -->
+<link rel="stylesheet" href="styles.css">
+<!-- Tipografía del sitio (Plus Jakarta Sans, de Google Fonts). -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- ESTILOS PROPIOS: unas pocas reglas de diseño que Tailwind no trae. -->
+<style>
+/* Fondo oscuro, color del texto y tipografía de toda la página. */
+body{background:#080C14;color:#f3f4f6;font-family:'Plus Jakarta Sans',sans-serif}
+/* Efecto "vidrio": fondo semitransparente y borroso. Se usa en tarjetas, cabecera y ventanas. */
+.glass{background:rgba(18,24,38,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08)}
+/* Cambio de color al pasar el mouse sobre algo con efecto vidrio. */
+.glass-hover:hover{background:rgba(26,34,52,.8);border-color:rgba(124,58,237,.4)}
+/* Brillo violeta detrás del logo. */
+.glow{box-shadow:0 0 40px -10px rgba(124,58,237,.3)}
+/* Oculta la barra de desplazamiento de las categorías (igual se pueden deslizar con el dedo o el mouse). */
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+</style>
+</head>
+<!-- COMIENZA LO QUE SE VE EN PANTALLA -->
+<body class="min-h-screen selection:bg-purple-600 selection:text-white flex flex-col">
+
+<!-- 1. VERIFICACIÓN DE EDAD: pantalla +18 que tapa el sitio hasta que la persona confirma. Para cambiar el texto, editá el párrafo de abajo. -->
+<div id="gate" class="fixed inset-0 z-[100] bg-[#080C14] flex items-center justify-center p-4">
+  <div class="glass rounded-3xl p-8 max-w-md text-center">
+    <div class="text-4xl font-extrabold mb-2">+18</div>
+    <h2 class="text-xl font-bold mb-2">Contenido para adultos</h2>
+    <p class="text-sm text-gray-400 mb-6">Este sitio contiene material sexual explícito. Para entrar tenés que ser mayor de 18 años (o la mayoría de edad de tu país).</p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <button onclick="entrar()" class="bg-gradient-to-r from-purple-600 to-pink-600 font-bold px-6 py-3 rounded-xl">Tengo 18 años o más</button>
+      <button onclick="location.href='https://www.google.com'" class="glass glass-hover font-semibold px-6 py-3 rounded-xl text-gray-300">Salir</button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. CABECERA (barra de arriba): logo, buscador, botón de apoyo y etiqueta +18. Queda fija al bajar. -->
+<header class="sticky top-0 z-50 glass border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-0 sm:h-20 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-3">
+      <!-- Logo del sitio: la imagen está en la carpeta assets/images/logo (junto a index.html). Si tu archivo se llama distinto de logo.png, cambiá el nombre en la ruta de abajo. Ojo: en GitHub Pages las mayúsculas y minúsculas importan. -->
+      <a href="./" aria-label="Nómada VN, inicio"><img src="assets/images/logo/logo.png" alt="Nómada VN" class="h-11 sm:h-12 w-auto"></a>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
+      <!-- Buscador. Debajo hay una caja (id="sugs") donde aparecen las sugerencias mientras se escribe. -->
+      <div class="relative flex-1 sm:flex-none min-w-0">
+        <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar juegos o novelas..." class="bg-black/40 border border-white/10 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-purple-500 w-full sm:w-64 transition-all">
+        <div id="sugs" class="hidden absolute right-0 top-full mt-2 w-full sm:w-72 bg-[#121826] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"></div>
+      </div>
+      <!-- Botón de donaciones: reemplazá AQUÍ_PEGA_TU_LINK_DE_DONACION por tu enlace (Ko-fi, Patreon, etc.). -->
+      <a href="AQUÍ_PEGA_TU_LINK_DE_DONACION" target="_blank" class="bg-pink-600/20 text-pink-300 border border-pink-500/30 hover:bg-pink-600 hover:text-white px-3 sm:px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap inline-flex items-center gap-1.5"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v2M14 2v2M6 2v2"/><path d="M16 8h1a4 4 0 0 1 0 8h-1"/><path d="M4 8h12v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/></svg> Apoyar</a>
+      <!-- Etiqueta +18 fija. -->
+      <span class="text-xs bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-full font-semibold">+18</span>
+    </div>
+  </div>
+</header>
+
+<!-- 3. BANNER DESTACADO: muestra el juego marcado con "destacado": true en juegos.json. El título y la sinopsis se llenan solos. -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 w-full">
+  <div class="relative rounded-3xl overflow-hidden glass p-6 sm:p-12 flex flex-col justify-end min-h-[300px] sm:min-h-[400px]">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#080C14] via-[#080C14]/60 to-transparent z-10"></div>
+    <!-- Fondo del banner: usa la portada del juego destacado. Si ese juego no tiene imagen, se ve esta foto de prueba (podés cambiar la dirección dentro de url(...)). -->
+    <div id="featBg" class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600')] bg-cover bg-center opacity-40"></div>
+    <div class="relative z-20 max-w-2xl">
+      <div class="flex items-center space-x-3 mb-2">
+        <span class="bg-purple-600/30 text-purple-300 border border-purple-500/30 text-xs px-3 py-1 rounded-full font-bold">Destacado del mes</span>
+        <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/10 px-2 py-1 rounded-md border border-white/10"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg> PC</span>
+        <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-white/10 px-2 py-1 rounded-md border border-white/10"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg> Android</span>
+      </div>
+      <!-- Título y sinopsis del destacado: NO escribir acá, se llenan solos desde juegos.json. -->
+      <h1 id="featTitle" class="text-3xl sm:text-5xl font-extrabold mt-2 mb-3 tracking-tight"></h1>
+      <p id="featDesc" class="text-gray-300 text-sm sm:text-base mb-6 line-clamp-2"></p>
+      <button onclick="openModal(FEATURED)" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-purple-600/30">Ver detalles</button>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CONTENIDO PRINCIPAL: selector de orden, categorías, tarjetas de juegos y paginación. -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 w-full flex-1">
+  <div class="flex flex-wrap items-center justify-between mb-4 gap-3">
+    <h2 class="text-lg sm:text-xl font-bold flex items-center space-x-2"><span class="w-2 h-2 rounded-full bg-purple-500"></span><span>Últimos lanzamientos y categorías</span></h2>
+    <!-- Selector para ordenar. "Más recientes" respeta el orden de juegos.json (el primero de la lista es el más nuevo). -->
+    <select id="orden" aria-label="Ordenar" class="glass rounded-full text-xs font-semibold px-3 py-2 text-gray-200 bg-[#121826] focus:outline-none focus:border-purple-500">
+      <option value="recientes">Más recientes</option>
+      <option value="az">A-Z</option>
+      <option value="za">Z-A</option>
+    </select>
+  </div>
+  <!-- Barra de categorías: se genera sola con las categorías que usan tus juegos. No escribir botones acá. -->
+  <div id="cats" class="flex items-center space-x-2 overflow-x-auto no-scrollbar py-2 mb-8 border-y border-white/5"></div>
+  <!-- Grilla de tarjetas de juegos: se genera sola desde juegos.json. -->
+  <div id="grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"></div>
+  <!-- Mensaje que aparece cuando una búsqueda o filtro no tiene resultados (o si falla la carga de juegos.json). -->
+  <p id="empty" class="hidden text-center text-gray-400 py-16">No hay juegos con ese filtro. Probá con otra categoría o borrá la búsqueda.</p>
+  <!-- Botones de páginas (1, 2, 3...). Se generan solos. -->
+  <div id="pager" class="flex justify-center items-center space-x-3 mt-12"></div>
+</main>
+
+<!-- 5. PIE DE PÁGINA: enlaces a redes y contacto. Reemplazá los textos que empiezan con AQUÍ_ y el correo tu_correo@example.com por los tuyos. -->
+<footer class="mt-20 glass border-t border-white/5 py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <!-- Texto de derechos: cambiá el nombre y el año si hace falta. -->
+    <span class="text-sm font-bold text-gray-300">Nómada VN © 2026</span>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="AQUÍ_LINK_DISCORD" target="_blank" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-purple-300">Discord</a>
+      <a href="AQUÍ_LINK_TELEGRAM" target="_blank" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-blue-300">Telegram</a>
+      <a href="AQUÍ_LINK_TWITTER" target="_blank" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-pink-300">Twitter/X</a>
+      <a href="mailto:tu_correo@example.com" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-gray-300">Contacto</a>
+      <a href="mailto:tu_correo@example.com?subject=Reclamo%20de%20derechos" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-bold text-gray-300">Reclamos de derechos</a>
+    </div>
+  </div>
+</footer>
+
+<!-- 6. VENTANA DEL JUEGO: se abre al tocar una tarjeta. Todo su contenido se llena solo con los datos del juego elegido. -->
+<div id="modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4" onclick="if(event.target===this)closeModal()">
+  <div class="glass max-w-xl w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+    <button onclick="closeModal()" aria-label="Cerrar" class="absolute top-6 right-6 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 w-9 h-9 rounded-full">✕</button>
+    <h2 id="mTitle" class="text-2xl font-bold mb-2 pr-10"></h2>
+    <div class="flex items-center space-x-3 mb-4">
+      <span id="mCat" class="text-xs bg-purple-600/20 text-purple-300 border border-purple-500/30 px-2.5 py-0.5 rounded-full font-semibold"></span>
+      <span id="mMeta" class="text-xs text-gray-400"></span>
+    </div>
+    <div class="mb-6 bg-black/30 border border-white/5 p-4 rounded-2xl">
+      <h3 class="text-xs font-bold text-purple-400 mb-2">Sinopsis</h3>
+      <p id="mDesc" class="text-sm text-gray-300 leading-relaxed"></p>
+    </div>
+    <!-- CAPTURAS DEL JUEGO: adelanto con hasta 5 imágenes. Se llena solo con el campo "capturas" de juegos.json. Si un juego no tiene, esta sección no se ve. -->
+    <div id="mShots" class="hidden mb-6">
+      <h3 class="text-sm font-bold text-gray-200 mb-3">Capturas del juego</h3>
+      <div id="mShotList" class="flex gap-3 overflow-x-auto no-scrollbar pb-1"></div>
+    </div>
+    <!-- DESCARGA PARA PC: el juego completo, en inglés. -->
+    <h3 class="text-sm font-bold text-gray-200 mb-1 flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Descargar para PC (Windows)</h3>
+    <p class="text-xs text-gray-500 mb-3">Juego completo, en inglés.</p>
+    <div id="mPcJuego" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6"></div>
+    <!-- TRADUCCIÓN AL ESPAÑOL PARA PC: va por separado, se instala sobre el juego de arriba. -->
+    <h3 class="text-sm font-bold text-gray-200 mb-1 border-t border-white/10 pt-4">Traducción al español para PC</h3>
+    <p class="text-xs text-gray-500 mb-3">Descargala aparte e instalala sobre el juego.</p>
+    <div id="mPcTrad" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6"></div>
+    <!-- DESCARGA PARA ANDROID: ya viene en español, no necesita traducción. -->
+    <h3 class="text-sm font-bold text-gray-200 mb-1 border-t border-white/10 pt-4 flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg> Descargar para Android (APK)</h3>
+    <p class="text-xs text-gray-500 mb-3">Ya viene en español, no necesitás nada más.</p>
+    <div id="mAndroid" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+    <!-- Botones de abajo: copiar el enlace del juego y reportar enlace caído (abre un correo ya escrito). -->
+    <div class="flex flex-wrap gap-3 mt-6 pt-4 border-t border-white/10">
+      <button id="btnCopiar" onclick="copiarEnlace()" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-semibold text-gray-300">Copiar enlace del juego</button>
+      <a id="btnReportar" href="#" class="glass glass-hover px-4 py-2 rounded-xl text-xs font-semibold text-red-300">Reportar enlace caído</a>
+    </div>
+  </div>
+</div>
+
+<!-- VISOR DE CAPTURAS: pantalla completa que se abre al tocar una imagen. Flechas para pasar de una a otra y X para cerrar. -->
+<div id="lightbox" class="fixed inset-0 z-[60] bg-black/95 hidden items-center justify-center p-4" onclick="if(event.target===this)cerrarVisor()">
+  <button onclick="cerrarVisor()" aria-label="Cerrar" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-xl">&times;</button>
+  <button onclick="moverVisor(-1)" aria-label="Anterior" class="absolute left-3 sm:left-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-2xl">&#8249;</button>
+  <img id="lbImg" src="" alt="" class="max-h-[85vh] max-w-full rounded-xl object-contain">
+  <button onclick="moverVisor(1)" aria-label="Siguiente" class="absolute right-3 sm:right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-2xl">&#8250;</button>
+  <span id="lbCount" class="absolute bottom-4 text-xs text-gray-300"></span>
+</div>
+
+<!-- 7. PROGRAMACIÓN (JavaScript): hace que la página funcione. Los datos de los juegos NO están acá, están en juegos.json. -->
+<script>
+// ===== LISTA DE CATEGORÍAS =====
+// Formato: ["nombre-corto", "Nombre que se ve"]. Para agregar una nueva, copiá una línea acá y también en admin.html.
+// En juegos.json hay que escribir el nombre corto (por ejemplo "ciencia-ficcion").
+const CATS=[["2d","2D"],["anal","Anal"],["bdsm","Bdsm"],["ciencia-ficcion","Ciencia ficción"],["control-mental","Control mental"],["corrupcion","Corrupción"],["dominacion-femenina","Dominación femenina"],["dominacion-masculina","Dominación masculina"],["embarazo","Embarazo"],["esclavo","Esclavo"],["universidad","Universidad"],["exclusivo","Exclusivo"],["fantasia","Fantasía"],["finalizado","Finalizado"],["furry","Furry"],["futa-trans","Futa/Trans"],["gay","Gay"],["harem","Harem"],["humor","Humor"],["ia","IA"],["incesto","Incesto"],["interracial","Interracial"],["lesbianas","Lesbianas"],["milf","Milf"],["monstruo","Monstruo"],["ntr","Ntr"],["parodia","Parodia"],["protagonista-femenino","Protagonista femenino"],["protagonista-masculino","Protagonista masculino"],["romance","Romance"],["rpgm","RPGM"],["sandbox","Sandbox"],["superpoderes","Superpoderes"],["tetas-grandes","Tetas grandes"],["virgen","Virgen"]];
+// Convierte el nombre corto en el nombre visible (por ejemplo "ciencia-ficcion" pasa a "Ciencia ficción").
+const CAT_NAME=Object.fromEntries(CATS);
+
+// ===== VARIABLES =====
+// GAMES guarda todos los juegos leídos de juegos.json (empieza vacía y se llena al cargar la página).
+let GAMES=[];
+// Posición del juego destacado en la lista.
+let FEATURED=0;
+// Cuántos juegos se muestran por página. Cambiá el 6 por otro número si querés más o menos.
+const PER=6;
+// Correo donde llegan los reportes de enlaces caídos. Reemplazalo por el tuyo.
+const REPORT_EMAIL="tu_correo@example.com";
+// Título original de la pestaña (se restaura al cerrar la ventana de un juego).
+const TITULO0=document.title;
+// Juego abierto ahora en la ventana (-1 significa que no hay ninguno).
+let actual=-1;
+// Estado actual: categoría elegida, texto buscado, página y orden.
+let cat="todos", q="", page=1, orden="recientes";
+// ===== FUNCIONES AUXILIARES =====
+// Atajo para encontrar un elemento del HTML por su id.
+const $=id=>document.getElementById(id);
+// Limpia un texto para mostrarlo de forma segura (evita que símbolos raros rompan el HTML).
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+// Dice si un enlace es válido: los vacíos o con "#" se consideran "sin enlace".
+const ok=u=>u&&u!=="#";
+// Quita tildes y mayúsculas, para que la búsqueda encuentre "fantasia" aunque diga "Fantasía".
+const norm=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+// Íconos de PC y Android (dibujos simples en vez de emojis, para que se vean igual en todos los dispositivos).
+const IC={pc:'<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',an:'<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>'};
+// Etiqueta sobre la portada. "Nuevo" y "Actualizado" duran 14 días desde la fecha del juego en juegos.json ("fecha" y "actualizado").
+// "Finalizado" aparece si el juego tiene esa categoría. Cambiá el 14 para que duren más o menos.
+const DIAS_ETIQUETA=14;
+const reciente=f=>f&&(Date.now()-new Date(f))/864e5<=DIAS_ETIQUETA;
+function etiqueta(g){
+ if(reciente(g.fecha))return["Nuevo","bg-pink-600 text-white"];
+ if(reciente(g.act))return["Actualizado","bg-blue-600 text-white"];
+ if(g.c.includes("finalizado"))return["Finalizado","bg-green-600 text-white"];
+ return null;
+}
+
+// ===== VERIFICACIÓN DE EDAD =====
+// Al tocar "Tengo 18 años o más": guarda la respuesta en el navegador y quita la pantalla.
+function entrar(){try{localStorage.setItem("age_ok","1")}catch(e){}$("gate").remove()}
+// Si la persona ya confirmó antes, no se le vuelve a preguntar.
+try{if(localStorage.getItem("age_ok")==="1")$("gate").remove()}catch(e){}
+
+// ===== BÚSQUEDA Y FILTROS =====
+// Un juego coincide si contiene todas las palabras escritas en el buscador.
+const coincide=g=>q.split(/\s+/).every(w=>g.s.includes(w));
+// Devuelve los juegos que cumplen la categoría y la búsqueda elegidas, ya ordenados.
+function list(){
+ const r=GAMES.map((g,i)=>({g,i})).filter(({g})=>(cat==="todos"||g.c.includes(cat))&&coincide(g));
+ if(orden==="az")r.sort((a,b)=>a.g.t.localeCompare(b.g.t,"es"));
+ if(orden==="za")r.sort((a,b)=>b.g.t.localeCompare(a.g.t,"es"));
+ return r;
+}
+// Muestra el desplegable con hasta 5 sugerencias debajo del buscador.
+function sugerencias(){
+ const box=$("sugs");
+ if(!q){box.classList.add("hidden");return}
+ const r=GAMES.map((g,i)=>({g,i})).filter(({g})=>coincide(g)).slice(0,5);
+ if(!r.length){box.innerHTML='<p class="px-4 py-3 text-xs text-gray-400">Sin resultados para esa búsqueda.</p>';box.classList.remove("hidden");return}
+ box.innerHTML=r.map(({g,i})=>`<button data-i="${i}" class="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-white/5">
+  ${g.img?`<img src="${g.img}" alt="" loading="lazy" class="w-10 h-10 rounded-lg object-cover">`:`<span class="w-10 h-10 rounded-lg bg-purple-900/60 flex items-center justify-center text-lg font-bold text-white/40">${esc(g.t[0])}</span>`}
+  <span class="min-w-0"><span class="block text-sm font-semibold truncate">${esc(g.t)}</span><span class="block text-xs text-gray-400 truncate">${esc(CAT_NAME[g.c[0]]||"")} • v${esc(g.v)}</span></span></button>`).join("");
+ box.classList.remove("hidden");
+}
+// Al tocar una sugerencia se abre ese juego y se cierra el desplegable.
+$("sugs").onclick=e=>{const b=e.target.closest("button");if(!b)return;$("sugs").classList.add("hidden");openModal(+b.dataset.i)};
+// Si se toca fuera del buscador, se cierra el desplegable.
+document.addEventListener("click",e=>{if(!e.target.closest("#searchInput,#sugs"))$("sugs").classList.add("hidden")});
+// Al cambiar el selector de orden se vuelve a la página 1 y se redibuja.
+$("orden").onchange=e=>{orden=e.target.value;page=1;render()};
+
+// ===== DIBUJAR LA PÁGINA =====
+// Dibuja la barra de categorías (solo las que usa algún juego).
+function renderCats(){
+ const b=(s,n)=>`<button data-c="${s}" class="${s===cat?"bg-purple-600 text-white shadow-md shadow-purple-600/20":"glass glass-hover text-gray-300"} text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition-all">${n}</button>`;
+ $("cats").innerHTML=b("todos","Todos")+CATS.filter(([s])=>GAMES.some(g=>g.c.includes(s))).map(([s,n])=>b(s,n)).join("");
+}
+
+// Dibuja las tarjetas de la página actual y los botones de paginación.
+// Para cambiar cómo se ve una tarjeta, editá el bloque de HTML de abajo.
+function render(){
+ const all=list(), pages=Math.max(1,Math.ceil(all.length/PER));
+ if(page>pages)page=pages;
+ const items=all.slice((page-1)*PER,page*PER);
+ $("grid").innerHTML=items.map(({g,i})=>`
+  <div class="glass glass-hover rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 group" onclick="openModal(${i})">
+   <div class="aspect-[4/3] overflow-hidden relative ${g.img?"":"bg-gradient-to-br from-purple-900 to-pink-900 flex items-center justify-center"}">
+    ${g.img?`<img src="${g.img}" alt="${esc(g.t)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`:`<span class="text-6xl font-black text-white/30">${esc(g.t[0])}</span>`}
+    <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs px-2.5 py-1 rounded-lg font-semibold">${esc(g.sz)}</span>
+    ${g.tag?`<span class="absolute top-3 left-3 ${g.tag[1]} text-xs px-2.5 py-1 rounded-lg font-bold">${g.tag[0]}</span>`:""}
+   </div>
+   <div class="p-4">
+    <div class="flex items-center justify-between"><span class="text-xs text-purple-400 font-semibold">${esc(CAT_NAME[g.c[0]]||"")}</span><span class="text-xs text-gray-400 inline-flex items-center gap-1.5">${IC.pc}${IC.an}</span></div>
+    <h3 class="font-bold text-base mt-1 truncate">${esc(g.t)}</h3>
+    <p class="text-xs text-gray-500 mt-1">Versión ${esc(g.v)}</p>
+   </div>
+  </div>`).join("");
+ $("empty").classList.toggle("hidden",all.length>0);
+ $("pager").innerHTML=pages>1?Array.from({length:pages},(_,k)=>`<button data-p="${k+1}" class="w-10 h-10 rounded-xl font-bold ${k+1===page?"bg-purple-600 text-white shadow-lg shadow-purple-600/30":"glass glass-hover text-gray-300"}">${k+1}</button>`).join(""):"";
+}
+
+// ===== EVENTOS (qué pasa al tocar o escribir) =====
+// Tocar una categoría: la marca, vuelve a la página 1 y redibuja.
+$("cats").onclick=e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;page=1;renderCats();render()};
+// Tocar un número de página: cambia de página y sube suavemente a la lista.
+$("pager").onclick=e=>{const b=e.target.closest("button");if(!b)return;page=+b.dataset.p;render();window.scrollTo({top:$("cats").offsetTop-100,behavior:"smooth"})};
+// Al escribir en el buscador: filtra los juegos y muestra sugerencias.
+$("searchInput").oninput=e=>{q=norm(e.target.value);page=1;render();sugerencias()};
+// Al hacer clic en el buscador: vuelve a mostrar las sugerencias.
+$("searchInput").onfocus=sugerencias;
+// Enter o Escape cierran el desplegable de sugerencias.
+$("searchInput").onkeydown=e=>{if(e.key==="Enter"||e.key==="Escape")$("sugs").classList.add("hidden")};
+
+// ===== VENTANA DEL JUEGO =====
+// Abre la ventana con los datos del juego número "i": título, sinopsis, botones de descarga y enlace propio.
+function openModal(i){
+ const g=GAMES[i];
+ $("mTitle").textContent=g.t;
+ $("mCat").textContent=g.c.map(s=>CAT_NAME[s]).filter(Boolean).slice(0,2).join(" / ");
+ $("mMeta").textContent=`${g.sz} • Versión ${g.v}`;
+ $("mDesc").textContent=g.d;
+ patch("mPcJuego",g.pcJ);patch("mPcTrad",g.pcT);patch("mAndroid",g.an);dibujarCapturas(g);
+ actual=i;
+ $("btnReportar").href="mailto:"+REPORT_EMAIL+"?subject="+encodeURIComponent("Enlace caído: "+g.t)+"&body="+encodeURIComponent("Juego: "+g.t+" (v"+g.v+")\nPlataforma (PC o Android):\nEnlace que falla (Mega, Mediafire o Drive):\n");
+ $("btnCopiar").textContent="Copiar enlace del juego";
+ try{history.replaceState(null,"","?juego="+g.slug)}catch(e){}
+ document.title=g.t+" - Nómada VN";
+ $("modal").classList.remove("hidden");$("modal").classList.add("flex");
+}
+// Dibuja los botones de descarga de un bloque (juego de PC, traducción de PC o juego de Android). Los que no tienen enlace no se muestran.
+function patch(id,o){
+ const links=[["Mega",o&&o.mega,"text-purple-300"],["Mediafire",o&&o.mf,"text-pink-300"],["Drive",o&&o.dr,"text-blue-300"]].filter(l=>ok(l[1]));
+ $(id).innerHTML=links.length?links.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener" class="glass glass-hover p-2.5 rounded-xl text-center font-semibold text-sm ${l[2]}">${l[0]}</a>`).join(""):`<p class="text-xs text-gray-500 sm:col-span-3">Parche próximamente.</p>`;
+}
+// Cierra la ventana y devuelve la dirección y el título de la pestaña a la normalidad.
+function closeModal(){
+ $("modal").classList.add("hidden");$("modal").classList.remove("flex");
+ try{history.replaceState(null,"",location.pathname)}catch(e){}
+ cerrarVisor();
+ document.title=TITULO0;actual=-1;
+}
+// Copia al portapapeles el enlace directo al juego abierto.
+async function copiarEnlace(){
+ if(actual<0)return;
+ const url=location.href.split(/[?#]/)[0]+"?juego="+GAMES[actual].slug;
+ try{await navigator.clipboard.writeText(url);$("btnCopiar").textContent="Enlace copiado"}
+ catch(e){$("btnCopiar").textContent="No se pudo copiar"}
+}
+// La tecla Escape también cierra la ventana.
+document.addEventListener("keydown",e=>{
+ const visorAbierto=!$("lightbox").classList.contains("hidden");
+ if(visorAbierto){
+  if(e.key==="Escape")cerrarVisor();
+  if(e.key==="ArrowLeft")moverVisor(-1);
+  if(e.key==="ArrowRight")moverVisor(1);
+ }else if(e.key==="Escape")closeModal();
+});
+
+// ===== CAPTURAS DEL JUEGO =====
+// Dibuja las miniaturas de las capturas dentro de la ventana del juego. Si el juego no tiene capturas, oculta la sección.
+function dibujarCapturas(g){
+ const caja=$("mShots"), lista=$("mShotList");
+ if(!g.shots.length){caja.classList.add("hidden");lista.innerHTML="";return}
+ lista.innerHTML=g.shots.map((u,k)=>`<img src="${esc(u)}" alt="Captura ${k+1} de ${esc(g.t)}" loading="lazy" data-k="${k}" class="h-28 sm:h-32 w-auto rounded-xl border border-white/10 cursor-pointer shrink-0 hover:border-purple-500 transition-all">`).join("");
+ caja.classList.remove("hidden");
+}
+// Al tocar una miniatura se abre el visor de pantalla completa en esa imagen.
+$("mShotList").onclick=e=>{const im=e.target.closest("img");if(im)abrirVisor(+im.dataset.k)};
+// Guarda qué imágenes se están viendo (lista) y cuál está en pantalla (pos).
+let visor={lista:[],pos:0};
+function abrirVisor(k){
+ visor.lista=GAMES[actual].shots;visor.pos=k;mostrarVisor();
+ $("lightbox").classList.remove("hidden");$("lightbox").classList.add("flex");
+}
+// Muestra la imagen actual del visor y el contador (por ejemplo "2 / 5").
+function mostrarVisor(){$("lbImg").src=visor.lista[visor.pos];$("lbCount").textContent=(visor.pos+1)+" / "+visor.lista.length}
+// Pasa a la imagen anterior (-1) o siguiente (1); después de la última vuelve a la primera.
+function moverVisor(d){const n=visor.lista.length;if(!n)return;visor.pos=(visor.pos+d+n)%n;mostrarVisor()}
+// Cierra el visor de pantalla completa.
+function cerrarVisor(){$("lightbox").classList.add("hidden");$("lightbox").classList.remove("flex");$("lbImg").src=""}
+
+// ===== CARGA DE JUEGOS =====
+// Lee juegos.json al abrir la página, prepara los datos y dibuja todo.
+async function cargar(){
+ renderCats();
+ try{
+  const r=await fetch("juegos.json",{cache:"no-store"});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  const data=await r.json();
+  // Arma los tres botones (Mega, Mediafire, Drive) de un bloque de descargas de juegos.json.
+  const cv=o=>({mega:o&&o.mega,mf:o&&o.mediafire,dr:o&&o.drive});
+  // Traduce los nombres de juegos.json (titulo, peso, categorias...) a los nombres cortos que usa el código.
+  GAMES=data.map(j=>({
+   t:j.titulo||"Sin título",v:j.version||"",sz:j.peso||"",c:j.categorias||[],d:j.sinopsis||"",img:j.imagen||"",shots:(Array.isArray(j.capturas)?j.capturas:[]).filter(u=>u&&u!=="#").slice(0,5),dest:!!j.destacado,fecha:j.fecha||"",act:j.actualizado||"",
+   pcJ:cv(j.pc&&j.pc.juego), pcT:cv(j.pc&&j.pc.traduccion), an:cv(j.android)
+  }));
+  // Crea para cada juego su "slug" (nombre para la dirección, sin tildes ni espacios) y un texto interno para buscar.
+  GAMES.forEach(g=>{g.tag=etiqueta(g);g.slug=norm(g.t).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");g.s=norm(g.t+" "+g.d+" "+g.c.map(x=>(CAT_NAME[x]||"")+" "+x).join(" "))});
+  renderCats();
+  // Busca el juego con "destacado": true (si no hay, usa el primero) y lo pone en el banner.
+  const f=GAMES.findIndex(g=>g.dest);FEATURED=f<0?0:f;
+  if(GAMES.length){$("featTitle").textContent=GAMES[FEATURED].t;$("featDesc").textContent=GAMES[FEATURED].d;if(GAMES[FEATURED].img)$("featBg").style.backgroundImage=`url(${JSON.stringify(GAMES[FEATURED].img)})`}
+  render();
+  // Si la dirección trae ?juego=nombre, abre ese juego automáticamente.
+  const sl=new URLSearchParams(location.search).get("juego");
+  if(sl){const k=GAMES.findIndex(g=>g.slug===sl);if(k>=0)openModal(k)}
+ }catch(e){
+  // Si falla la lectura de juegos.json, muestra este aviso con instrucciones.
+  console.error(e);
+  $("empty").textContent="No se pudo cargar juegos.json. Revisá que esté en la misma carpeta y que no tenga errores de formato. Si abriste index.html con doble clic, el navegador lo bloquea: usá un servidor local o subilo a un hosting.";
+  $("empty").classList.remove("hidden");
+ }
+}
+// Arranca todo cuando la página termina de cargar.
+cargar();
+</script>
+</body>
+</html>
