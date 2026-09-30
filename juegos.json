@@ -286,12 +286,12 @@
     "imagen": "",
     "pc": {
       "juego": {
-        "mega": "https://example.com/pc",
+        "mega": "#",
         "mediafire": "#",
         "drive": "#"
       },
       "traduccion": {
-        "mega": "https://example.com/traduccion",
+        "mega": "#",
         "mediafire": "#",
         "drive": "#"
       }
