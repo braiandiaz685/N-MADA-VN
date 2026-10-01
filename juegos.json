@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "BOXMAN",
+    "peso": "",
+    "categorias": [
+      "NTR",
+      "Sigilo",
+      "Voyeurismo",
+      "Misterio",
+      "Estrategia"
+    ],
+    "sinopsis": "Un título peculiar donde encarnas a un personaje misterioso (o un extraño inquilino) que utiliza tácticas sigilosas y manipulación desde las sombras para entrometerse en las vidas íntimas de las parejas vecinas.",
+    "imagen": "assets/images/juegos/boxman/portada.webp?v=1790877823937",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://pixeldrain.com/u/gKxVNhTP",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Eimi's NTS Life",
     "peso": "",
     "categorias": [
