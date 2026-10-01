@@ -1,5 +1,38 @@
 [
   {
+    "titulo": "Childhood Friends with Benefits",
+    "peso": "",
+    "categorias": [
+      "2D",
+      "Romance",
+      "Amigos de la Infancia",
+      "Vida Cotidiana",
+      "Comedia Romántica"
+    ],
+    "sinopsis": "Yukihisa es un estudiante común cuya vida da un giro cuando su amiga de la infancia, Shiho, le propone una idea peculiar: practicar ser novios para ganar confianza antes de buscar una relación real. Lo que empieza como un juego inocente y casual entre amigos rápidamente comienza a cruzar fronteras románticas y sexuales, obligándolos a confrontar lo que verdaderamente sienten el uno por el otro.",
+    "imagen": "assets/images/juegos/childhood-friends-with-benefits/portada.webp?v=1790869809491",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://cuttty.com/oz6w",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "destacado": true,
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "The Adelaide Inn",
     "peso": "372 MB",
     "categorias": [
