@@ -1,5 +1,37 @@
 [
   {
+    "titulo": "Developer Ecstasy",
+    "peso": "",
+    "categorias": [
+      "Oficina",
+      "Desarrollo de Juegos",
+      "Comedia",
+      "Vida Laboral",
+      "Seducción"
+    ],
+    "sinopsis": "Una comedia sobre la industria de desarrollo de videojuegos, donde un programador exhausto termina trabajando rodeado de hermosas diseñadoras y creativas, convirtiendo la oficina en un espacio de tentación y distracciones",
+    "imagen": "assets/images/juegos/developer-ecstasy/portada.webp?v=1790880385907",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://srnky.com/DeveloperEctasyMF",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "Runaway Ninja: Mischievous Arts of the Kunoichi",
     "peso": "",
     "categorias": [
