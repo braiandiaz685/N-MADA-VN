@@ -1,5 +1,37 @@
 [
   {
+    "titulo": "The Curse of Kubel",
+    "peso": "",
+    "categorias": [
+      "RPG",
+      "NTR",
+      "Fantasía",
+      "Magia",
+      "Corrupción",
+      "Deudas"
+    ],
+    "sinopsis": "Un RPG de fantasía donde la joven maga Magami debe explorar las ruinas de una ciudad azotada por una antigua maldición. Para reunir los recursos y fondos necesarios, deberá aceptar trabajos cuestionables y resistir la corrupción que amenaza con doblegarla.",
+    "imagen": "assets/images/juegos/the-curse-of-kubel/portada.webp?v=1790879360734",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/vtCohhpz mega https://mega.nz/file/7AYAzQIA#tDvNPEjc8DYIYHuiSFlXjMcWGnfCQPM4vLdD_p5aghQ",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Tropical Chase!",
     "peso": "",
     "categorias": [
