@@ -391,12 +391,12 @@
     "pc": {
       "juego": {
         "mega": "#",
-        "mediafire": "#",
+        "mediafire": "https://exeygo.com/ot8iU",
         "drive": "#"
       },
       "traduccion": {
         "mega": "#",
-        "mediafire": "https://exeygo.com/ot8iU",
+        "mediafire": "#",
         "drive": "#"
       }
     },
@@ -406,6 +406,7 @@
       "drive": "#"
     },
     "destacado": true,
+    "top": 1,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
