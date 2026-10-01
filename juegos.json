@@ -1,7 +1,7 @@
 [
   {
     "titulo": "Euphoria",
-    "peso": "",
+    "peso": "2.26 gb",
     "categorias": [
       "Novela Visual",
       "Horror Psicológico",
@@ -29,6 +29,7 @@
       "mediafire": "#",
       "drive": "#"
     },
-    "fecha": "2026-10-01"
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
   }
 ]
