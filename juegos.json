@@ -1,5 +1,38 @@
 [
   {
+    "titulo": "Nymphomania Priestess",
+    "peso": "",
+    "categorias": [
+      "2D",
+      "RPG",
+      "Fantasía",
+      "Sacerdotisa",
+      "Corrupción",
+      "Monstruos"
+    ],
+    "sinopsis": "Una joven e inocente sacerdotisa emprende una misión para purificar el mal en el reino. Sin embargo, al enfrentarse a monstruos y malas influencias, cae bajo el efecto de maldiciones y tentaciones que despiertan en ella un deseo",
+    "imagen": "assets/images/juegos/nymphomania-priestess/portada.webp?v=1790878594748",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://gofile.io/d/33XT0z",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "https://gofile.io/d/33XT0z",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "BOXMAN",
     "peso": "",
     "categorias": [
