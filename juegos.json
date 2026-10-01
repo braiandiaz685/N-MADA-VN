@@ -1,5 +1,38 @@
 [
   {
+    "titulo": "Smash Girls",
+    "peso": "",
+    "categorias": [
+      "Acción",
+      "Combate",
+      "Pandillas Urbana",
+      "Dominación",
+      "3D"
+    ],
+    "sinopsis": "Tras ser secuestrado por una organización mafiosa y terminar involucrado en guerras de pandillas urbanas, el protagonista descubre que asumir el control del bajo mundo conlleva privilegios particulares. Para mantener su dominio sobre la ciudad y sus rivales, deberá enfrentar a las chicas pertenecientes a las facciones enemigas y someterlas mediante combates y encuentros íntimos.",
+    "imagen": "assets/images/juegos/smash-girls/portada.webp?v=1790871823036",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/CaBjQ",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "destacado": true,
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "Aristoputas",
     "peso": "",
     "categorias": [
@@ -29,7 +62,6 @@
       "mediafire": "#",
       "drive": "#"
     },
-    "destacado": true,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
