@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "Starmaker Story",
+    "peso": "",
+    "categorias": [
+      "Pixel Art",
+      "Idols",
+      "Gestión de Carrera",
+      "Romance",
+      "Simulación"
+    ],
+    "sinopsis": "Con una cuidada estética pixel art, juegas como un productor en la industria del entretenimiento con el objetivo de convertir a chicas talentosas en superestrellas pop. A medida que gestionas sus carreras y la convivencia diaria, la relación profesional evoluciona hacia un vínculo íntimo y romántico.",
+    "imagen": "assets/images/juegos/starmaker-story/portada.webp?v=1790876895121",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/Dee3td",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Ona Kura Maid Life ~ Kurasu no Gyaru Meido to Resort Gohoushi Seikatsu ~",
     "peso": "",
     "categorias": [
