@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "No-exit Apartment",
+    "peso": "",
+    "categorias": [
+      "Pixel Art",
+      "Misterio",
+      "Atrapados",
+      "Supervivencia",
+      "Novela Visual"
+    ],
+    "sinopsis": "Con un estilo en pixel art, el juego sitúa al protagonista atrapado en un misterioso complejo de apartamentos sin salida. Para sobrevivir y avanzar, deberá interactuar y relacionarse con las peculiares e inquietantes inquilinas del edificio.",
+    "imagen": "assets/images/juegos/no-exit-apartment/portada.webp?v=1790879536351",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/kYtO9X2M",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "The Curse of Kubel",
     "peso": "",
     "categorias": [
