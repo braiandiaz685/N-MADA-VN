@@ -1,5 +1,39 @@
 [
   {
+    "titulo": "Aristoputas",
+    "peso": "",
+    "categorias": [
+      "Isekai",
+      "Comedia",
+      "Parodia",
+      "Realeza",
+      "Seducción",
+      "Novela Visual"
+    ],
+    "sinopsis": "Un joven apasionado por los videojuegos de romance renace sorpresivamente dentro del mundo de su entrega favorita. Utilizando su conocimiento previo de la trama, decide frustrar las ambiciones de los personajes principales y tomar el control del reino seduciendo y sometiendo a las altivas mujeres de la realeza. Una comedia satírica y erótica en un entorno aristocrático.",
+    "imagen": "assets/images/juegos/aristoputas/portada.webp?v=1790871638727",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/AristoPuT",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "destacado": true,
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "Natsuiro Lesson: The Last Summer Time",
     "peso": "",
     "categorias": [
@@ -28,7 +62,6 @@
       "mediafire": "#",
       "drive": "#"
     },
-    "destacado": true,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
