@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nómada VN - Panel de juegos</title>
+<style>
+*{box-sizing:border-box}
+/* Colores y tipografía generales del panel. */
+body{background:#080C14;color:#f3f4f6;font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;padding:24px}
+.wrap{max-width:860px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:16px;margin:0 0 12px}
+.mut{color:#9ca3af;font-size:13px}
+.box{background:#121826;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px;margin:16px 0}
+label{display:block;font-size:12px;color:#c4c8d2;margin:0 0 4px}
+input[type=text],input[type=password],textarea{width:100%;background:#000;border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#f3f4f6;padding:8px 10px;font:inherit;font-size:14px}
+input:focus,textarea:focus{outline:none;border-color:#7c3aed}
+textarea{min-height:80px;resize:vertical}
+.g{display:grid;gap:12px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+button{background:#7c3aed;color:#fff;border:0;border-radius:10px;padding:9px 16px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+button.sec{background:#1e2536;border:1px solid rgba(255,255,255,.12);color:#d1d5db}
+button.del{background:#3b1414;color:#fca5a5}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.06)}
+.row:first-child{border-top:0}
+.acts{display:flex;gap:6px}.acts button{padding:5px 10px;font-size:12px}
+#msg{font-size:13px;margin-top:10px;min-height:18px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#0b111d;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:5px 11px;font-size:12px;cursor:pointer;color:#d1d5db}
+.chip.on{border-color:#7c3aed;background:#1b1440;color:#c4b5fd;font-weight:600}
+.slot{display:flex;flex-direction:column;gap:6px;min-width:0}
+.marco{aspect-ratio:4/3;background:#0b111d;border:1px dashed rgba(255,255,255,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;font-size:12px;position:relative}
+.marco:hover{border-color:#7c3aed}
+.marco[data-estado]::after{content:attr(data-estado);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);font-size:12px;font-weight:600}
+.slotBtns{display:flex;gap:4px;flex-wrap:wrap}.slotBtns button{padding:4px 8px;font-size:11px}
+.caps5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:640px){.caps5{grid-template-columns:repeat(2,1fr)}}
+.err{color:#fca5a5}.ok{color:#86efac}
+details{margin-top:12px;font-size:13px;color:#c4c8d2}summary{cursor:pointer;color:#c4b5fd}ol{margin:8px 0 0 18px;padding:0;line-height:1.7}
+</style>
+</head>
+<body>
+<!-- Contenedor central del panel. -->
+<div class="wrap">
+  <h1>Panel de juegos</h1>
+  <p class="mut">Uso personal: no subas este archivo a tu hosting. Solo sube <b>index.html</b> y <b>juegos.json</b>.</p>
+
+  <div class="box">
+    <!-- CONEXIÓN CON GITHUB: con esto, al guardar un juego el panel actualiza juegos.json directamente en tu repositorio (sin descargar ni reemplazar archivos). -->
+    <h2>Conexión con GitHub</h2>
+    <p class="mut" id="ghEstado">Todavía no configuraste la conexión. Completá los datos y tocá "Guardar conexión".</p>
+    <p class="mut" style="margin-top:10px">Repositorio: nomadavn/nomadavn.github.io, rama main, archivo juegos.json (ya vienen fijos en este panel).</p>
+    <div style="margin-top:10px"><label for="ghToken">Token de acceso de GitHub</label><input type="password" id="ghToken" autocomplete="off" placeholder="github_pat_..."></div>
+    <label style="display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px"><input type="checkbox" id="ghAuto" checked> Publicar automáticamente en GitHub al guardar o eliminar un juego</label>
+    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+      <button id="ghGuardar">Guardar conexión</button>
+      <button class="sec" id="ghCargar">Cargar lista desde GitHub</button>
+      <button class="del" id="ghBorrar">Borrar token</button>
+    </div>
+    <details>
+      <summary>Cómo crear el token (una sola vez)</summary>
+      <ol>
+        <li>En GitHub: tu foto de perfil, Settings, Developer settings, Personal access tokens, Fine-grained tokens, Generate new token.</li>
+        <li>Ponele un nombre (por ejemplo "panel Nómada VN") y elegí la duración (por ejemplo 90 días).</li>
+        <li>En "Repository access" elegí "Only select repositories" y marcá solo nomadavn.github.io.</li>
+        <li>En "Repository permissions" buscá "Contents" y poné "Read and write".</li>
+        <li>Generalo, copiá el token (empieza con github_pat_) y pegalo arriba. GitHub lo muestra una sola vez.</li>
+      </ol>
+      <p class="mut" style="margin-top:8px">El token se guarda solo en este navegador de tu PC (no dentro de este archivo) y da acceso únicamente a ese repositorio. No lo compartas ni lo pegues en otro lado.</p>
+    </details>
+  </div>
+
+  <div class="box">
+    <!-- PASO 1: cargar tu lista actual (desde GitHub si ya conectaste, o desde un archivo juegos.json). -->
+    <h2>1. Tu lista actual</h2>
+    <p class="mut" id="estado">Buscando juegos.json...</p>
+    <input type="file" id="archivo" accept=".json,application/json" style="margin-top:8px;color:#9ca3af">
+  </div>
+
+  <div class="box" id="formJuego">
+    <!-- PASO 2: formulario para agregar (o editar) un juego. -->
+    <h2 id="formTitulo">2. Agregar un juego</h2>
+    <div class="g g2">
+      <div><label for="titulo">Título</label><input type="text" id="titulo"></div>
+      <div><label for="peso">Peso</label><input type="text" id="peso" placeholder="3.5 GB"></div>
+    </div>
+    <!-- Peso: elegí el archivo del juego en tu PC y el panel lee su tamaño (el archivo no se sube a ningún lado). -->
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px">
+      <button type="button" class="sec" id="calcPeso">Calcular peso desde un archivo</button>
+      <input type="file" id="archivoJuego" hidden>
+      <span class="mut">El archivo no se sube: el panel solo lee su tamaño.</span>
+    </div>
+    <!-- Categorías: escribí una o varias separadas por coma y tocá Enter (si no existe, se crea sola), o tocá una de las que ya existen. Cada juego puede tener varias. -->
+    <div style="margin-top:12px">
+      <label for="catNueva">Categorías</label>
+      <div id="catsSel" class="chips" style="margin-bottom:8px"></div>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="catNueva" list="catsLista" autocomplete="off" placeholder="Una o varias separadas por coma, por ejemplo: NTR, Pechos Grandes, RPG. Tocá Enter (si no existe, se crea)" style="flex:1;min-width:0">
+        <button type="button" class="sec" id="catAgregar">Agregar</button>
+      </div>
+      <datalist id="catsLista"></datalist>
+      <div class="mut" style="margin:10px 0 6px">Categorías que ya existen (tocá una para sumarla o quitarla):</div>
+      <div id="catsExistentes" class="chips"></div>
+    </div>
+    <div style="margin-top:12px"><label for="sinopsis">Sinopsis</label><textarea id="sinopsis"></textarea></div>
+    <div style="margin-top:12px;max-width:280px"><div><!-- Portada: selector visual. Tocá el recuadro o arrastrá una imagen: se sube a tu repositorio de GitHub (carpeta assets/images/juegos/nombre-del-juego/) y la ruta se guarda sola en el campo oculto. --><label>Imagen de portada</label><div class="slot" data-id="imagen"></div><input type="hidden" id="imagen"><p class="mut" style="margin-top:6px">Se sube a tu repositorio de GitHub. GitHub no permite contenido sexualmente explícito: usá una portada apta. Escribí el título antes de subirla.</p></div></div>
+    <!-- Descarga del juego para PC (en inglés). Dejá vacío el enlace que no tengas. -->
+    <label style="margin-top:14px">Juego para PC (en inglés)</label>
+    <div class="g g3">
+      <input type="text" id="pjMega" placeholder="Mega"><input type="text" id="pjMf" placeholder="Mediafire"><input type="text" id="pjDr" placeholder="Drive">
+    </div>
+    <!-- Traducción al español para PC: archivo aparte, se instala sobre el juego. -->
+    <label style="margin-top:14px">Traducción al español para PC (archivo aparte)</label>
+    <div class="g g3">
+      <input type="text" id="ptMega" placeholder="Mega"><input type="text" id="ptMf" placeholder="Mediafire"><input type="text" id="ptDr" placeholder="Drive">
+    </div>
+    <!-- Descarga del juego para Android (ya en español, sin traducción aparte). Dejá vacío el enlace que no tengas. -->
+    <label style="margin-top:14px">Juego para Android (ya en español)</label>
+    <div class="g g3">
+      <input type="text" id="anMega" placeholder="Mega"><input type="text" id="anMf" placeholder="Mediafire"><input type="text" id="anDr" placeholder="Drive">
+    </div>
+    <!-- Marcalo para que este juego sea el destacado del banner (solo puede haber uno). -->
+    <label style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:13px"><input type="checkbox" id="destacado"> Mostrar como destacado del mes</label>
+    <!-- Al marcarlo, se guarda la fecha de hoy y el juego muestra la etiqueta "Actualizado" por 14 días. Los juegos nuevos reciben la etiqueta "Nuevo" solos. -->
+    <label style="display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px"><input type="checkbox" id="marcarAct"> Marcar como actualizado (etiqueta "Actualizado" por 14 días)</label>
+    <div style="display:flex;gap:10px;margin-top:14px">
+      <button id="guardar">Guardar juego</button>
+      <button class="sec" id="cancelar" style="display:none">Cancelar edición</button>
+    </div>
+    <div id="msg"></div>
+  </div>
+
+  <div class="box">
+    <!-- PASO 3: lista de juegos y botones para descargar el archivo actualizado. -->
+    <h2>3. Juegos en la lista (<span id="cuenta">0</span>)</h2>
+    <div id="lista"></div>
+    <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+      <button id="publicar">Publicar en GitHub</button>
+      <button class="sec" id="descargar">Descargar juegos.json</button>
+      <button class="sec" id="copiar">Copiar JSON</button>
+    </div>
+    <p class="mut" style="margin-top:10px">Con la publicación automática activada, cada juego que guardás o eliminás se sube solo. También podés usar "Publicar en GitHub" cuando quieras, o descargar el archivo para subirlo a mano. Los juegos nuevos aparecen primero. GitHub tarda 1 o 2 minutos en mostrar los cambios en el sitio.</p>
+  </div>
+</div>
+
+<!-- PROGRAMACIÓN del panel: no hace falta tocar nada de acá para agregar juegos. -->
+<script>
+const $=id=>document.getElementById(id);
+// games = juegos que se ven en el panel; editando = posición del juego que se está editando (-1 significa que se agrega uno nuevo).
+let games=[], editando=-1, shaCargado=null, publicando=false;
+
+
+// Muestra un aviso debajo del formulario (rojo = error, verde = todo bien).
+function msg(t,c){const m=$("msg");m.textContent=t;m.className=c||""}
+function val(id){return $(id).value.trim()}
+// Si un enlace se deja vacío, guarda "#" (el sitio lo interpreta como "sin enlace").
+function enlace(v){return v||"#"}
+
+// Carga en el panel la lista de juegos leída del archivo.
+function cargarLista(data,origen){
+ if(!Array.isArray(data))throw new Error("El archivo no es una lista de juegos");
+ shaCargado=null;games=data;render();$("estado").textContent=`Cargados ${games.length} juegos desde ${origen}.`;
+}
+// Al abrir el panel intenta leer juegos.json solo (funciona si lo abrís con un servidor local).
+function cargaLocal(){
+ fetch("juegos.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>cargarLista(d,"juegos.json"))
+ .catch(()=>{$("estado").textContent="No pude leer juegos.json automáticamente. Elegí el archivo abajo (o empezá una lista nueva agregando juegos)."});
+}
+// Si no lo leyó solo, elegís el archivo a mano con el botón.
+$("archivo").onchange=async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{cargarLista(JSON.parse(await f.text()),f.name)}catch(err){$("estado").textContent="Ese archivo no tiene un formato válido: "+err.message}
+};
+
+// Vacía el formulario y vuelve al modo "agregar".
+function limpiar(){
+ // Solo vacía los campos del formulario del juego (no toca la conexión con GitHub).
+ document.querySelectorAll("#formJuego input[type=text],#formJuego textarea").forEach(i=>{i.value=""});
+ IMG_IDS.forEach(id=>setImg(id,""));catsSel=[];renderCatsForm();
+ $("destacado").checked=false;$("marcarAct").checked=false;editando=-1;
+ $("formTitulo").textContent="2. Agregar un juego";$("guardar").textContent="Guardar juego";$("cancelar").style.display="none";
+}
+
+// Junta lo escrito en el formulario y arma el juego con el formato de juegos.json.
+function leer(){
+ const g={titulo:val("titulo"),peso:val("peso"),categorias:catsSel.slice(),
+  sinopsis:val("sinopsis"),imagen:val("imagen"),
+  pc:{juego:{mega:enlace(val("pjMega")),mediafire:enlace(val("pjMf")),drive:enlace(val("pjDr"))},traduccion:{mega:enlace(val("ptMega")),mediafire:enlace(val("ptMf")),drive:enlace(val("ptDr"))}},
+  android:{mega:enlace(val("anMega")),mediafire:enlace(val("anMf")),drive:enlace(val("anDr"))}};
+ if($("destacado").checked)g.destacado=true;
+ return g;
+}
+
+// Guardar: valida el título, y agrega el juego arriba de la lista (o guarda los cambios si se está editando).
+$("guardar").onclick=async()=>{
+ if(val("catNueva"))agregarCat(val("catNueva")); // si dejaste una categoría escrita sin tocar Enter, se suma igual
+ const g=leer();
+ if(!g.titulo){msg("Escribí el título del juego.","err");return}
+ // Fechas para las etiquetas: un juego nuevo guarda la fecha de hoy; al editar se conserva la que tenía.
+ const hoy=new Date().toISOString().slice(0,10);
+ const nuevo=editando<0;
+ if(!nuevo){const prev=games[editando];if(prev.fecha)g.fecha=prev.fecha;if(prev.actualizado)g.actualizado=prev.actualizado}else g.fecha=hoy;
+ if($("marcarAct").checked)g.actualizado=hoy;
+ if(g.destacado)games.forEach(x=>delete x.destacado);
+ if(nuevo)games.unshift(g);else games[editando]=g;
+ limpiar();render();
+ // Si la publicación automática está activada, sube la lista a GitHub en este mismo momento.
+ if(cfg().auto&&configurado()){
+  msg("Juego guardado. Publicando en GitHub...","ok");
+  const listo=await publicar((nuevo?"Agregar juego: ":"Actualizar juego: ")+g.titulo);
+  msg(listo?"Juego guardado y publicado en GitHub.":"El juego quedó en la lista del panel, pero NO se publicó. Revisá el aviso de la conexión y probá con Publicar en GitHub.",listo?"ok":"err");
+ }else msg((nuevo?"Juego agregado.":"Juego actualizado.")+" Usá Publicar en GitHub o Descargar juegos.json cuando termines.","ok");
+};
+$("cancelar").onclick=()=>{limpiar();msg("")};
+
+// Carga un juego existente en el formulario para modificarlo.
+function editar(i){
+ const g=games[i];editando=i;
+ $("titulo").value=g.titulo||"";$("peso").value=g.peso||"";
+ $("sinopsis").value=g.sinopsis||"";setImg("imagen",g.imagen||"");catsSel=(g.categorias||[]).slice();renderCatsForm();
+ const q=v=>v&&v!=="#"?v:"";
+ const pj=g.pc&&g.pc.juego, pt=g.pc&&g.pc.traduccion;
+ $("pjMega").value=q(pj&&pj.mega);$("pjMf").value=q(pj&&pj.mediafire);$("pjDr").value=q(pj&&pj.drive);
+ $("ptMega").value=q(pt&&pt.mega);$("ptMf").value=q(pt&&pt.mediafire);$("ptDr").value=q(pt&&pt.drive);
+ $("anMega").value=q(g.android&&g.android.mega);$("anMf").value=q(g.android&&g.android.mediafire);$("anDr").value=q(g.android&&g.android.drive);
+ $("destacado").checked=!!g.destacado;$("marcarAct").checked=false;
+ $("formTitulo").textContent="Editando: "+g.titulo;$("guardar").textContent="Guardar cambios";$("cancelar").style.display="";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+// Borra un juego de la lista (pide confirmación).
+async function eliminar(i){
+ const t=games[i].titulo;
+ if(!confirm(`¿Eliminar "${t}" de la lista?`))return;
+ games.splice(i,1);if(editando===i)limpiar();render();
+ if(cfg().auto&&configurado()){
+  const listo=await publicar("Eliminar juego: "+t);
+  msg(listo?"Juego eliminado y publicado en GitHub.":"Se quitó de la lista del panel, pero NO se publicó en GitHub.",listo?"ok":"err");
+ }
+}
+
+// Dibuja la lista de juegos con sus botones Editar y Eliminar.
+function render(){
+ $("cuenta").textContent=games.length;renderCatsForm();
+ const l=$("lista");l.innerHTML="";
+ if(!games.length){l.innerHTML='<p class="mut">Todavía no hay juegos. Agregá el primero arriba.</p>';return}
+ games.forEach((g,i)=>{
+  const r=document.createElement("div");r.className="row";
+  const t=document.createElement("div");
+  t.innerHTML='<div style="font-size:14px;font-weight:600"></div><div class="mut"></div>';
+  t.firstChild.textContent=g.titulo+(g.destacado?" (destacado)":"");
+  t.lastChild.textContent=`${g.peso||"-"}`;
+  // Las categorías del juego se muestran como botones separados, no como texto con comas.
+  const cc=document.createElement("div");cc.className="chips";cc.style.marginTop="6px";
+  (g.categorias||[]).forEach(n=>cc.append(chip(n,false,()=>{})));
+  t.append(cc);
+  const a=document.createElement("div");a.className="acts";
+  const b1=document.createElement("button");b1.className="sec";b1.textContent="Editar";b1.onclick=()=>editar(i);
+  const b2=document.createElement("button");b2.className="del";b2.textContent="Eliminar";b2.onclick=()=>eliminar(i);
+  a.append(b1,b2);r.append(t,a);l.append(r);
+ });
+}
+
+// Convierte la lista al texto que va dentro de juegos.json.
+const json=()=>JSON.stringify(games,null,2)+"\n";
+// Descarga el juegos.json actualizado. Después reemplazá el de tu sitio por este.
+$("descargar").onclick=()=>{
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([json()],{type:"application/json"}));
+ a.download="juegos.json";a.click();URL.revokeObjectURL(a.href);
+};
+// Copia el contenido al portapapeles (alternativa a descargar).
+$("copiar").onclick=async()=>{try{await navigator.clipboard.writeText(json());msg("JSON copiado.","ok")}catch(e){msg("No se pudo copiar. Usá Descargar.","err")}};
+// ===== CONEXIÓN CON GITHUB =====
+// Guarda y lee los datos de conexión (repositorio, rama, archivo y token) solo en este navegador.
+const LS_GH="nomada_admin_github";
+// Datos fijos de tu repositorio (ya no hace falta escribirlos en el panel). Si algún día cambiás de repositorio, modificá estas tres líneas.
+const GH_REPO="nomadavn/nomadavn.github.io", GH_RAMA="main", GH_RUTA="juegos.json";
+function cfg(){return{repo:GH_REPO,rama:GH_RAMA,ruta:GH_RUTA,token:val("ghToken"),auto:$("ghAuto").checked}}
+function configurado(){const c=cfg();return !!(c.repo&&c.token&&c.ruta)}
+// Muestra el estado de la conexión (rojo = error, verde = todo bien).
+function ghMsg(t,c){const m=$("ghEstado");m.textContent=t;m.className="mut "+(c||"")}
+try{const g=JSON.parse(localStorage.getItem(LS_GH)||"null");if(g){$("ghToken").value=g.token||"";$("ghAuto").checked=g.auto!==false;if(g.token)ghMsg("Conexión guardada en este navegador.","")}}catch(e){}
+$("ghGuardar").onclick=()=>{try{localStorage.setItem(LS_GH,JSON.stringify(cfg()));ghMsg("Conexión guardada en este navegador.","ok")}catch(e){ghMsg("No se pudo guardar en este navegador.","err")}};
+$("ghBorrar").onclick=()=>{$("ghToken").value="";try{const g=JSON.parse(localStorage.getItem(LS_GH)||"null")||{};delete g.token;localStorage.setItem(LS_GH,JSON.stringify(g))}catch(e){}ghMsg("Token borrado de este navegador.","ok")};
+
+// Herramientas de la API de GitHub.
+const GH="https://api.github.com";
+const ghHeaders=t=>({"Accept":"application/vnd.github+json","Authorization":"Bearer "+t,"X-GitHub-Api-Version":"2022-11-28"});
+const ghUrl=c=>`${GH}/repos/${c.repo}/contents/${c.ruta.split("/").map(encodeURIComponent).join("/")}`;
+// Texto a base64 y al revés, sin romper las tildes ni la ñ.
+const aB64=t=>{let s="";new TextEncoder().encode(t).forEach(x=>s+=String.fromCharCode(x));return btoa(s)};
+const deB64=b=>new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g,"")),c=>c.charCodeAt(0)));
+// Convierte los errores de GitHub en mensajes claros en español.
+async function ghError(r){
+ let d="";try{d=(await r.json()).message||""}catch(e){}
+ const t={401:"El token no es válido o venció.",403:"El token no tiene permiso de escritura (necesita Contents: Read and write) o se superó el límite de GitHub.",404:"No se encontró el repositorio, la rama o el archivo, o el token no tiene acceso a ese repositorio.",409:"Hubo un conflicto: el archivo cambió mientras publicabas. Volvé a intentarlo.",422:"GitHub rechazó los datos. Revisá la rama y el nombre del archivo."}[r.status];
+ return new Error((t||"Error "+r.status+".")+(d?" ("+d+")":""));
+}
+// Lee el archivo desde GitHub. Devuelve {sha, texto}, o null si el archivo todavía no existe.
+async function ghLeer(c){
+ const r=await fetch(ghUrl(c)+"?ref="+encodeURIComponent(c.rama),{headers:ghHeaders(c.token),cache:"no-store"});
+ if(r.status===404)return null;
+ if(!r.ok)throw await ghError(r);
+ const d=await r.json();
+ if(d.content)return{sha:d.sha,texto:deB64(d.content)};
+ // Archivos grandes (más de 1 MB): GitHub no manda el contenido, se pide en formato crudo.
+ const r2=await fetch(ghUrl(c)+"?ref="+encodeURIComponent(c.rama),{headers:{...ghHeaders(c.token),"Accept":"application/vnd.github.raw+json"},cache:"no-store"});
+ if(!r2.ok)throw await ghError(r2);
+ return{sha:d.sha,texto:await r2.text()};
+}
+// Trae la lista de juegos desde GitHub y la muestra en el panel.
+async function cargarGitHub(){
+ const c=cfg();
+ if(!configurado()){ghMsg("Completá repositorio, archivo y token, y tocá Guardar conexión.","err");return}
+ ghMsg("Cargando desde GitHub...","");
+ try{
+  const r=await ghLeer(c);
+  if(!r){games=[];render();shaCargado=null;$("estado").textContent="No encontré ese archivo en GitHub. Si es la primera vez, se creará al publicar.";ghMsg("Conectado. El archivo todavía no existe en el repositorio.","ok");return}
+  cargarLista(JSON.parse(r.texto),"GitHub");shaCargado=r.sha;
+  ghMsg("Conectado. Lista cargada desde GitHub.","ok");
+ }catch(e){ghMsg("No se pudo cargar: "+e.message,"err")}
+}
+$("ghCargar").onclick=cargarGitHub;
+
+// Sube la lista actual a GitHub (crea un commit). Devuelve true si salió bien.
+async function publicar(mensaje){
+ const c=cfg();
+ if(!configurado()){ghMsg("Configurá la conexión con GitHub primero.","err");return false}
+ if(publicando)return false;
+ publicando=true;ghMsg("Publicando en GitHub...","");
+ try{
+  const actual=await ghLeer(c);
+  const shaRemoto=actual?actual.sha:null;
+  // Protección: evita pisar cambios que no estén en este panel.
+  if(actual&&shaCargado===null){
+   let n="?";try{n=JSON.parse(actual.texto).length}catch(e){}
+   if(!confirm(`GitHub ya tiene ${n} juegos y este panel tiene ${games.length}. No cargaste la lista de GitHub, así que publicar REEMPLAZA todo el archivo por lo que ves acá. ¿Continuar?`)){ghMsg("Publicación cancelada. Tocá Cargar lista desde GitHub para traer la versión actual.","err");return false}
+  }else if(actual&&shaRemoto!==shaCargado){
+   if(!confirm("El archivo en GitHub cambió desde que cargaste la lista (¿lo editaste en otro lado?). Si seguís, se reemplaza por lo que hay en este panel. ¿Sobrescribir?")){ghMsg("Publicación cancelada. Tocá Cargar lista desde GitHub para traer la última versión.","err");return false}
+  }
+  const cuerpo={message:mensaje,content:aB64(json()),branch:c.rama};
+  if(shaRemoto)cuerpo.sha=shaRemoto;
+  const r=await fetch(ghUrl(c),{method:"PUT",headers:{...ghHeaders(c.token),"Content-Type":"application/json"},body:JSON.stringify(cuerpo)});
+  if(!r.ok)throw await ghError(r);
+  shaCargado=(await r.json()).content.sha;
+  ghMsg("Publicado en GitHub a las "+new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"})+". El sitio se actualiza en 1 o 2 minutos.","ok");
+  return true;
+ }catch(e){ghMsg("No se pudo publicar: "+e.message,"err");return false}
+ finally{publicando=false}
+}
+// Botón "Publicar en GitHub": sube la lista completa cuando quieras.
+$("publicar").onclick=async()=>{const ok=await publicar("Actualizar lista de juegos");msg(ok?"Lista publicada en GitHub.":"No se publicó. Revisá el aviso de la conexión.",ok?"ok":"err")};
+
+// Al abrir el panel: si ya guardaste la conexión, carga la lista desde GitHub; si no, intenta leer juegos.json de la carpeta.
+function cargaInicial(){if(configurado())cargarGitHub();else cargaLocal()}
+// ===== SUBIDA DE LA PORTADA A GITHUB =====
+// Limpieza: borra del navegador la clave de ImgBB que ya no se usa.
+try{localStorage.removeItem("nomada_admin_imgbb")}catch(e){}
+// Convierte el título en un nombre de carpeta (sin tildes ni espacios). Ejemplo: "Shadows of Desire" pasa a "shadows-of-desire".
+function slugTitulo(t){return String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
+// Achica la imagen (ancho máximo) y la convierte a WebP para que la página cargue rápido. Si algo falla, usa el archivo original.
+async function optimizar(archivo,maxAncho){
+ if(!archivo.type.startsWith("image/")||archivo.type==="image/gif")return archivo;
+ try{
+  const bmp=await createImageBitmap(archivo);
+  const esc=Math.min(1,maxAncho/bmp.width);
+  const c=document.createElement("canvas");c.width=Math.round(bmp.width*esc);c.height=Math.round(bmp.height*esc);
+  c.getContext("2d").drawImage(bmp,0,0,c.width,c.height);
+  const blob=await new Promise(res=>c.toBlob(res,"image/webp",0.85));
+  if(!blob)return archivo;
+  return new File([blob],archivo.name.replace(/\.[^.]+$/,"")+".webp",{type:"image/webp"});
+ }catch(e){return archivo}
+}
+// Lee un archivo y lo devuelve en base64 (el formato que pide la API de GitHub).
+function aB64Archivo(f){return new Promise((ok,mal)=>{const r=new FileReader();r.onload=()=>ok(String(r.result).split(",")[1]);r.onerror=()=>mal(new Error("No se pudo leer la imagen."));r.readAsDataURL(f)})}
+// Sube la portada al repositorio: crea la carpeta del juego (assets/images/juegos/nombre-del-juego/) y guarda ahí portada.webp.
+// Devuelve la ruta que se guarda en juegos.json (con "?v=" para que el navegador no muestre una portada vieja) y una vista previa local.
+async function subirPortada(archivo){
+ const c=cfg();
+ if(!configurado())throw new Error("Primero guardá la conexión con GitHub (token) en la caja de arriba.");
+ const slug=slugTitulo(val("titulo"));
+ if(!slug)throw new Error("Escribí primero el título del juego: se usa para nombrar su carpeta.");
+ const f=await optimizar(archivo,900);
+ const ext=((f.name.match(/\.([a-z0-9]+)$/i)||[])[1]||"webp").toLowerCase();
+ const ruta="assets/images/juegos/"+slug+"/portada."+ext;
+ const url=ghUrl({...c,ruta});
+ // Si ya existe (por ejemplo al cambiar la portada), GitHub pide el "sha" del archivo viejo para reemplazarlo.
+ let sha=null;
+ const r0=await fetch(url+"?ref="+encodeURIComponent(c.rama),{headers:ghHeaders(c.token),cache:"no-store"});
+ if(r0.ok)sha=(await r0.json()).sha;else if(r0.status!==404)throw await ghError(r0);
+ const cuerpo={message:"Portada de "+val("titulo"),content:await aB64Archivo(f),branch:c.rama};
+ if(sha)cuerpo.sha=sha;
+ const r=await fetch(url,{method:"PUT",headers:{...ghHeaders(c.token),"Content-Type":"application/json"},body:JSON.stringify(cuerpo)});
+ if(!r.ok)throw await ghError(r);
+ return{ruta:ruta+"?v="+Date.now(),vista:URL.createObjectURL(f)};
+}
+
+// ===== SELECTOR VISUAL DE IMAGEN (portada) =====
+// Ids de los campos ocultos donde queda guardada la dirección de cada imagen.
+const IMG_IDS=["imagen"];
+// Cambia la imagen de un selector: guarda la dirección en el campo oculto y actualiza la vista previa.
+// Convierte la ruta guardada en el juego en una dirección que se pueda ver desde este panel (las rutas del sitio se buscan en tu sitio publicado).
+function urlVista(u){return /^(https?:|blob:|data:)/i.test(u)?u:"https://"+GH_REPO.split("/")[1]+"/"+u.replace(/^\//,"")}
+function setImg(id,url,vista){
+ $(id).value=url||"";
+ const s=document.querySelector(`.slot[data-id="${id}"]`);if(!s)return;
+ const marco=s.querySelector(".marco");marco.innerHTML="";
+ if(url){
+  const im=document.createElement("img");im.src=vista||urlVista(url);im.alt="";im.style.cssText="width:100%;height:100%;object-fit:cover";
+  im.onerror=()=>{marco.innerHTML='<span class="mut" style="padding:6px;text-align:center">No se pudo mostrar la vista previa</span>'};
+  marco.appendChild(im);
+ }else marco.innerHTML='<span class="mut" style="text-align:center;padding:6px">Elegir imagen<br>o arrastrala acá</span>';
+ s.querySelector(".quitar").style.display=url?"":"none";
+}
+// Sube la portada elegida al repositorio de GitHub y, si sale bien, la muestra en el selector.
+async function subirCampo(id,archivo){
+ const marco=document.querySelector(`.slot[data-id="${id}"] .marco`);
+ marco.setAttribute("data-estado","Subiendo...");
+ try{const r=await subirPortada(archivo);setImg(id,r.ruta,r.vista);msg("Portada subida al repositorio. Guardá el juego para conservarla.","ok")}
+ catch(e){msg("No se pudo subir la portada: "+e.message,"err")}
+ marco.removeAttribute("data-estado");
+}
+// Arma cada recuadro: vista previa, botones (Elegir, Dirección, Quitar), selector de archivo y arrastrar y soltar.
+document.querySelectorAll(".slot").forEach(s=>{
+ const id=s.dataset.id;
+ s.innerHTML='<div class="marco"></div><div class="slotBtns"><button type="button" class="sec elegir">Elegir</button><button type="button" class="sec dir">Dirección</button><button type="button" class="del quitar" style="display:none">Quitar</button></div><input type="file" accept="image/*" hidden>';
+ const f=s.querySelector("input"),marco=s.querySelector(".marco");
+ marco.onclick=s.querySelector(".elegir").onclick=()=>f.click();
+ f.onchange=()=>{if(f.files[0])subirCampo(id,f.files[0]);f.value=""};
+ // "Dirección": para pegar a mano la dirección o la ruta de una portada que ya tengas.
+ s.querySelector(".dir").onclick=()=>{const u=prompt("Pegá la dirección o la ruta de la portada (por ejemplo assets/images/juegos/mi-juego/portada.webp):",$(id).value);if(u!==null)setImg(id,u.trim())};
+ s.querySelector(".quitar").onclick=()=>setImg(id,"");
+ marco.ondragover=e=>{e.preventDefault();marco.style.borderColor="#7c3aed"};
+ marco.ondragleave=()=>{marco.style.borderColor=""};
+ marco.ondrop=e=>{
+  e.preventDefault();marco.style.borderColor="";
+  const fs=[...e.dataTransfer.files].filter(x=>x.type.startsWith("image/"));
+  if(!fs.length)return;
+  subirCampo(id,fs[0]);
+ };
+ setImg(id,$(id).value);
+});
+// Limpieza: borra del navegador las claves de las IAs que ya no se usan (Groq y Gemini).
+try{localStorage.removeItem("nomada_admin_groq");localStorage.removeItem("nomada_admin_gemini")}catch(e){}
+
+// Botón "Calcular peso desde un archivo": lee el tamaño del archivo del juego (no lo sube a ningún lado).
+$("calcPeso").onclick=()=>$("archivoJuego").click();
+$("archivoJuego").onchange=()=>{
+ const f=$("archivoJuego").files[0];$("archivoJuego").value="";if(!f)return;
+ const gb=f.size/1024**3;
+ $("peso").value=gb>=1?gb.toFixed(1)+" GB":Math.max(1,Math.round(f.size/1024**2))+" MB";
+ msg("Peso calculado: "+$("peso").value+".","ok");
+};
+// ===== CATEGORÍAS =====
+// Las categorías no son una lista fija: si escribís un nombre que no existe, se crea solo. Dos nombres que solo cambian en tildes o mayúsculas cuentan como la misma.
+const normCat=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+// Categorías elegidas para el juego que estás cargando.
+let catsSel=[];
+// Categorías que ya usan los juegos de la lista (sin repetir), en orden alfabético.
+function catsExistentes(){const m=new Map();games.forEach(g=>(g.categorias||[]).forEach(n=>{const k=normCat(n);if(k&&!m.has(k))m.set(k,String(n).trim())}));return[...m.values()].sort((x,y)=>x.localeCompare(y,"es"))}
+// Suma una o varias categorías al juego. Podés escribir varias juntas separadas por coma (por ejemplo: NTR, Pechos Grandes, RPG).
+// Si una ya existe con otra escritura, usa el nombre que ya existe; si no, la crea con ese nombre.
+function agregarCat(texto){
+ String(texto||"").split(/[,;\n]+/).forEach(t=>{
+  t=t.trim().replace(/\s+/g," ");if(!t)return;
+  const k=normCat(t);if(catsSel.some(x=>normCat(x)===k))return;
+  const ex=catsExistentes().find(x=>normCat(x)===k);
+  catsSel.push(ex||t.charAt(0).toUpperCase()+t.slice(1));
+ });
+ renderCatsForm();
+}
+function quitarCat(t){catsSel=catsSel.filter(x=>normCat(x)!==normCat(t));renderCatsForm()}
+// Crea un botón redondo con el texto indicado.
+function chip(texto,on,fn){const s=document.createElement("span");s.className="chip"+(on?" on":"");s.textContent=texto;s.onclick=fn;return s}
+// Dibuja las categorías elegidas, las que ya existen y las sugerencias del campo de texto.
+function renderCatsForm(){
+ const sel=$("catsSel");sel.innerHTML="";
+ catsSel.forEach(t=>sel.append(chip(t+"  x",true,()=>quitarCat(t))));
+ if(!catsSel.length){const s=document.createElement("span");s.className="mut";s.textContent="Todavía no elegiste ninguna.";sel.append(s)}
+ const ex=$("catsExistentes");ex.innerHTML="";
+ const lista=catsExistentes();
+ lista.forEach(t=>{const on=catsSel.some(x=>normCat(x)===normCat(t));ex.append(chip(t,on,()=>on?quitarCat(t):agregarCat(t)))});
+ if(!lista.length){const s=document.createElement("span");s.className="mut";s.textContent="Todavía no hay categorías: escribí la primera arriba.";ex.append(s)}
+ const dl=$("catsLista");dl.innerHTML="";lista.forEach(t=>{const o=document.createElement("option");o.value=t;dl.append(o)});
+}
+$("catAgregar").onclick=()=>{agregarCat(val("catNueva"));$("catNueva").value=""};
+// Si pegás varias categorías juntas (separadas por coma), se agregan todas de una vez.
+$("catNueva").onpaste=e=>{const t=(e.clipboardData||window.clipboardData).getData("text");if(/[,;\n]/.test(t)){e.preventDefault();agregarCat(t);$("catNueva").value=""}};
+$("catNueva").onkeydown=e=>{if(e.key==="Enter"||e.key===","){e.preventDefault();agregarCat(val("catNueva"));$("catNueva").value=""}};
+
+render();
+cargaInicial();
+</script>
+</body>
+</html>
