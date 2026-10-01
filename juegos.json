@@ -1,5 +1,37 @@
 [
   {
+    "titulo": "The Adelaide Inn",
+    "peso": "",
+    "categorias": [
+      "NTR",
+      "RPG",
+      "Corrupción",
+      "Gestión",
+      "Fantasía Medieval"
+    ],
+    "sinopsis": "Al sur de Hydensberg se encuentra la Posada Adelaida, un refugio para viajeros regentado por Gunter y su esposa Mira, quienes viven felizmente enamorados. La tranquilidad del lugar se rompe con la llegada de diversos extraños y amenazas, poniendo a prueba la devoción de la pareja. Las decisiones del jugador determinarán si su amor resiste las adversidades o si sucumben ante la corrupción, la infidelidad y el engaño.",
+    "imagen": "assets/images/juegos/the-adelaide-inn/portada.webp?v=1790868469562",
+    "pc": {
+      "juego": {
+        "mega": "https://mega.nz/file/AsoHyAgR#tcaMBPMCifFhk0FqZyYU3Lunnd8He6Mb_DtDlnD_dLU",
+        "mediafire": "#",
+        "drive": "https://drive.google.com/file/d/1a4ZPUiovDd_Dj9fOuiiYwgT8-dAArI1J/view"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "Euphoria",
     "peso": "2.26 gb",
     "categorias": [
