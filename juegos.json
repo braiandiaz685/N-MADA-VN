@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "titulo": "Euphoria",
+    "peso": "",
+    "categorias": [
+      "Novela Visual, Horror Psicológico, Misterio, BDSM, Juego de Supervivencia, Oscuro"
+    ],
+    "sinopsis": "Keisuke y un grupo de compañeras de clase despiertan atrapados en una extraña instalación blanca sin recordar cómo llegaron ahí. Una voz misteriosa los obliga a participar en un juego sádico y perverso donde Keisuke debe realizar actos extremos con las chicas para desbloquear las cerraduras que les permitirán escapar. Sin embargo, detrás del sufrimiento se esconde una trama llena de misterio, manipulación y giros oscuros sobre la verdadera naturaleza del experimento.",
+    "imagen": "assets/images/juegos/euphoria/portada.webp?v=1790834575348",
+    "pc": {
+      "juego": {
+        "mega": "https://exeygo.com/EuphoriaSaveFinal",
+        "mediafire": "https://cuttty.com/ancestal",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  }
+]
