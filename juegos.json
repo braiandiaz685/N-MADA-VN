@@ -28,7 +28,9 @@
       "mediafire": "https://exeygo.com/HAiRj1",
       "drive": "#"
     },
-    "fecha": "2026-10-01"
+    "destacado": true,
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
   },
   {
     "titulo": "Starmaker Story",
@@ -184,7 +186,6 @@
       "mediafire": "#",
       "drive": "#"
     },
-    "destacado": true,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
