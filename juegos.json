@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "Tropical Chase!",
+    "peso": "",
+    "categorias": [
+      "Exhibicionismo",
+      "Verano",
+      "Playa",
+      "Tropical",
+      "Juegos al Aire Libre."
+    ],
+    "sinopsis": "Desarrollado en un entorno veraniego y tropical, el protagonista se ve envuelto en situaciones donde el calor y la playa incitan al exhibicionismo y a juegos atrevidos al aire libre con las chicas de la isla.",
+    "imagen": "assets/images/juegos/tropical-chase/portada.webp?v=1790879143194",
+    "pc": {
+      "juego": {
+        "mega": "https://workupload.com/file/EUSXq4BeSLB",
+        "mediafire": "https://srnky.com/TropicalChase",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Drink Bar Maid: Regression",
     "peso": "",
     "categorias": [
