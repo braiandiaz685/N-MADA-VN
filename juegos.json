@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "Driven Affairs",
+    "peso": "",
+    "categorias": [
+      "Novela Visual",
+      "2D",
+      "Drama",
+      "Infidelidad",
+      "Madurez"
+    ],
+    "sinopsis": "Una novela visual centrada en las complejas dinámicas de pareja, infidelidad y deseo reprimido. Sigues la vida de un protagonista envuelto en dilemas morales al cruzar los límites con mujeres casadas o comprometidas en su entorno cotidiano.",
+    "imagen": "assets/images/juegos/driven-affairs/portada.webp?v=1790877155565",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/ot8iU",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "https://exeygo.com/HAiRj1",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Starmaker Story",
     "peso": "",
     "categorias": [
