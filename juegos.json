@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "Vespertine",
+    "peso": "",
+    "categorias": [
+      "3D",
+      "Simulación",
+      "Romance Nocturno",
+      "Sandbox",
+      "Dominación"
+    ],
+    "sinopsis": "Un juego simulador en 3D ambientado en un entorno moderno y oscuro. El jugador explora relaciones secretas y encuentros nocturnos con diferentes chicas, tomando decisiones que moldean el nivel de dominación, afecto o corrupción en cada historia.",
+    "imagen": "assets/images/juegos/vespertine/portada.webp?v=1790877444219",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://www.mediafire.com/file_premium/maqqy31aj4aq63t/Vespertine-1.7-win.zip/file",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "https://www.mediafire.com/file_premium/1o6yyl8st7v2jmb/vespetine.renpy-1.7-1787434571-release.apk/file",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Driven Affairs",
     "peso": "",
     "categorias": [
