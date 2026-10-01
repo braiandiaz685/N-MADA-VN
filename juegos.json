@@ -1,5 +1,38 @@
 [
   {
+    "titulo": "The Censor",
+    "peso": "",
+    "categorias": [
+      "Distopía",
+      "Extorsión",
+      "Simulación de Gestión",
+      "Censura",
+      "Decisiones"
+    ],
+    "sinopsis": "En una sociedad distópica con estrictas normas morales, asumes el rol de un censor encargado de revisar, editar o prohibir material considerado indecente. Sin embargo, la posición te otorga el poder de extorsionar y manipular a las hermosas creadoras y ciudadanas para tu propio beneficio y placer personal.",
+    "imagen": "assets/images/juegos/the-censor/portada.webp?v=1790872087465",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "https://srnky.com/TheCensor",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "destacado": true,
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "Smash Girls",
     "peso": "",
     "categorias": [
@@ -28,7 +61,6 @@
       "mediafire": "#",
       "drive": "#"
     },
-    "destacado": true,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
