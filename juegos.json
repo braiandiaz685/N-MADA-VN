@@ -1,5 +1,38 @@
 [
   {
+    "titulo": "Natsuiro Lesson: The Last Summer Time",
+    "peso": "",
+    "categorias": [
+      "Anime",
+      "Romance",
+      "Tutoría",
+      "Vida Cotidiana",
+      "Recuentos de la Vida."
+    ],
+    "sinopsis": "Tras un giro inesperado en su vida, el protagonista se convierte en el tutor privado de una joven. Pasando días de verano juntos en un espacio íntimo, la convivencia diaria hace que sus corazones y cuerpos se vuelvan cada vez más cercanos. A través de interacciones interactivas cotidianas, su relación se desarrolla desde la timidez inicial hasta un vínculo íntimo y profundo.",
+    "imagen": "assets/images/juegos/natsuiro-lesson-the-last-summer-time/portada.webp?v=1790871445417",
+    "pc": {
+      "juego": {
+        "mega": "https://cuttty.com/wLaT",
+        "mediafire": "https://srnky.com/ABcYW",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "destacado": true,
+    "fecha": "2026-10-01",
+    "actualizado": "2026-10-01"
+  },
+  {
     "titulo": "Self-defense Dojo Secret NTR Lesson Sin Censura [v1.9.10]",
     "peso": "",
     "categorias": [
@@ -28,7 +61,6 @@
       "mediafire": "#",
       "drive": "#"
     },
-    "destacado": true,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
