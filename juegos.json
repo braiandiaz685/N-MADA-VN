@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "CRYNARIA – Tears in the Abyss",
+    "peso": "",
+    "categorias": [
+      "Monstruos",
+      "Fantasía Oscura",
+      "Dungeon Crawler",
+      "RPG",
+      "Riesgo"
+    ],
+    "sinopsis": "Un título de fantasía oscura y exploración de mazmorras donde la protagonista se adentra en un abismo habitado por criaturas y monstruos temibles, enfrentando constantes peligros de sometimiento y dominación.",
+    "imagen": "assets/images/juegos/crynaria-tears-in-the-abyss/portada.webp?v=1790879701853",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://srnky.com/cynaria",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "No-exit Apartment",
     "peso": "",
     "categorias": [
