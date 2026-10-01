@@ -1,5 +1,36 @@
 [
   {
+    "titulo": "Eimi's NTS Life",
+    "peso": "",
+    "categorias": [
+      "NTR",
+      "Drama",
+      "Parejas",
+      "Manipulación",
+      "2D"
+    ],
+    "sinopsis": "La historia sigue la vida cotidiana de Eimi y su pareja, cuya rutina se ve alterada por la intromisión de terceros. A través de la manipulación y la seducción progresiva, se explora el desgaste de la confianza y el proceso de engaño en la relación.",
+    "imagen": "assets/images/juegos/eimi-s-nts-life/portada.webp?v=1790877626426",
+    "pc": {
+      "juego": {
+        "mega": "#",
+        "mediafire": "#",
+        "drive": "#"
+      },
+      "traduccion": {
+        "mega": "#",
+        "mediafire": "https://exeygo.com/EimiNT022",
+        "drive": "#"
+      }
+    },
+    "android": {
+      "mega": "#",
+      "mediafire": "#",
+      "drive": "#"
+    },
+    "fecha": "2026-10-01"
+  },
+  {
     "titulo": "Vespertine",
     "peso": "",
     "categorias": [
