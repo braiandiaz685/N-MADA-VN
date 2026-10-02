@@ -543,8 +543,8 @@
     "fecha": "2026-10-01"
   },
   {
-    "titulo": "The Censor",
-    "peso": "",
+    "titulo": "The Censor español",
+    "peso": "538.09MB",
     "categorias": [
       "Distopía",
       "Extorsión",
@@ -557,7 +557,7 @@
     "pc": {
       "juego": {
         "mega": "#",
-        "mediafire": "https://srnky.com/TheCensor",
+        "mediafire": "https://www.mediafire.com/file/4f0mply5oik7c44/TheCensor_3.1.4_Code_Arc.rar/file",
         "drive": "#"
       },
       "traduccion": {
@@ -571,6 +571,7 @@
       "mediafire": "#",
       "drive": "#"
     },
+    "top": 10,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
