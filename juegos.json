@@ -1,7 +1,7 @@
 [
   {
     "titulo": "Developer Ecstasy",
-    "peso": "",
+    "peso": "836 MB",
     "categorias": [
       "Oficina",
       "Desarrollo de Juegos",
@@ -14,12 +14,12 @@
     "pc": {
       "juego": {
         "mega": "#",
-        "mediafire": "#",
+        "mediafire": "https://www.mediafire.com/file_premium/iypw1l8fgszde8b/Developer_Ecstasy_Ch2_V1_ESP_WillModZ_Rev2_MF.rar/file",
         "drive": "#"
       },
       "traduccion": {
         "mega": "#",
-        "mediafire": "https://srnky.com/DeveloperEctasyMF",
+        "mediafire": "#",
         "drive": "#"
       }
     },
