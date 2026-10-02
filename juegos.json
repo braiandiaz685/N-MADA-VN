@@ -350,8 +350,8 @@
     "fecha": "2026-10-01"
   },
   {
-    "titulo": "Vespertine",
-    "peso": "",
+    "titulo": "Vespertine español",
+    "peso": "2.53GB",
     "categorias": [
       "3D",
       "Simulación",
@@ -364,12 +364,12 @@
     "pc": {
       "juego": {
         "mega": "#",
-        "mediafire": "#",
+        "mediafire": "https://www.mediafire.com/file_premium/maqqy31aj4aq63t/Vespertine-1.7-win.zip/file",
         "drive": "#"
       },
       "traduccion": {
         "mega": "#",
-        "mediafire": "https://www.mediafire.com/file_premium/maqqy31aj4aq63t/Vespertine-1.7-win.zip/file",
+        "mediafire": "#",
         "drive": "#"
       }
     },
@@ -378,6 +378,7 @@
       "mediafire": "https://www.mediafire.com/file_premium/1o6yyl8st7v2jmb/vespetine.renpy-1.7-1787434571-release.apk/file",
       "drive": "#"
     },
+    "top": 6,
     "fecha": "2026-10-01"
   },
   {
