@@ -416,8 +416,8 @@
     "actualizado": "2026-10-01"
   },
   {
-    "titulo": "Starmaker Story",
-    "peso": "",
+    "titulo": "Starmaker Story español",
+    "peso": "521.55MB",
     "categorias": [
       "Pixel Art",
       "Idols",
@@ -430,12 +430,12 @@
     "pc": {
       "juego": {
         "mega": "#",
-        "mediafire": "#",
+        "mediafire": "https://www.mediafire.com/file_premium/i9bisjevds2ff6r/Starmaker_1.8A_%2528Code_Arc%2529.rar/file",
         "drive": "#"
       },
       "traduccion": {
         "mega": "#",
-        "mediafire": "https://exeygo.com/Dee3td",
+        "mediafire": "#",
         "drive": "#"
       }
     },
