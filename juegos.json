@@ -576,8 +576,8 @@
     "actualizado": "2026-10-01"
   },
   {
-    "titulo": "Smash Girls",
-    "peso": "",
+    "titulo": "Smash Girls español",
+    "peso": "1.2 GB",
     "categorias": [
       "Acción",
       "Combate",
@@ -590,7 +590,7 @@
     "pc": {
       "juego": {
         "mega": "#",
-        "mediafire": "https://exeygo.com/CaBjQ",
+        "mediafire": "https://www.mediafire.com/file_premium/u2jhcjdm5zumcpo/Smash_Girls_v1.0.9_DLC_Code_Arc.rar/file",
         "drive": "#"
       },
       "traduccion": {
@@ -604,6 +604,7 @@
       "mediafire": "#",
       "drive": "#"
     },
+    "top": 9,
     "fecha": "2026-10-01",
     "actualizado": "2026-10-01"
   },
